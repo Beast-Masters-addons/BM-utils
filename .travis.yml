@@ -5,13 +5,14 @@ addons:
     packages:
       - luarocks
 
-install:
+before_install:
+  - export PATH=${PATH}:$HOME/.luarocks/bin
   - luarocks install --local luacheck
   - luarocks install --local luaunit
   - luarocks install --local luacov
 
 before_script:
-  - /home/travis/.luarocks/bin/luacheck addon --no-color -q -g --no-self
+  - luacheck addon --no-color -q -g --no-self
 
 script:
   - cd tests
