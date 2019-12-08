@@ -1,0 +1,28 @@
+language: minimal
+
+addons:
+  apt:
+    packages:
+      - luarocks
+
+install:
+  - luarocks install --local luacheck
+  - luarocks install --local luaunit
+  - luarocks install --local luacov
+
+before_script:
+  - /home/travis/.luarocks/bin/luacheck addon --no-color -q -g --no-self
+
+script:
+  - cd tests
+  - lua -lluacov test_utils.lua
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.2
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always

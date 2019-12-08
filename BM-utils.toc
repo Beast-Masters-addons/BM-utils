@@ -1,0 +1,12 @@
+#@retail@
+## Interface: 80205
+#@end-retail@
+#@non-retail@
+# ## Interface: 11302
+#@end-non-retail@
+## Version: @project-version@
+## Author: datagutten
+## Title: Lib: Beast Masters utilities
+## Notes: Utilities used in my addons
+
+addon/utils.lua

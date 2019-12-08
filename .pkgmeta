@@ -1,0 +1,9 @@
+package-as: BM-utils
+
+externals:
+  libs/LibStub:
+    url: https://repos.wowace.com/wow/libstub/trunk
+    tag: latest
+
+ignore:
+  - tests

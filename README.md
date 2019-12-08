@@ -1,2 +1,2 @@
-# BM-utils
-Utils used in my addons
+# Beast Masters utilities
+Utilities used in my addons

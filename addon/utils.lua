@@ -1,0 +1,120 @@
+local lib = LibStub:NewLibrary("BM-utils-1.0", 1)
+
+function lib:printf(str, ...)
+    DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
+end
+
+function lib:sprintf(str, ...)
+    return string.format(str, ...)
+end
+
+-- Add a message to chat frame with specified color
+--/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
+--/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
+function lib:colorize(str, rgb)
+    --@debug@
+    self:printf('RGB: %s', rgb)
+    --@end-debug@
+    return string.format('|c%s%s|r', rgb, str)
+end
+
+-- Add a message to chat frame with colors
+function lib:cprint(message, r, g, b)
+    local DEFAULT_FONT_COLOR = {["R"]=255, ["G"]=255, ["B"]=255}
+    DEFAULT_CHAT_FRAME:AddMessage(message,
+            (r or DEFAULT_FONT_COLOR["R"]),
+            (g or DEFAULT_FONT_COLOR["G"]),
+            (b or DEFAULT_FONT_COLOR["B"]));
+end
+
+function lib:IsWoWClassic()
+    return select(4, GetBuildInfo()) < 20000
+end
+
+-- Add a message to chat frame with red color
+function lib:error(message)
+    self:cprint(message, 255, 0,0)
+end
+
+-- Get character name and realm, fall back to current player if character not specified
+function lib:GetCharacterInfo(character, realm)
+    if not character or character == "" then
+        character = UnitName("player")
+    end
+    if not realm then
+        realm = GetRealmName()
+    end
+    return character, realm
+end
+
+-- Get character name and realm as a string
+function lib:GetCharacterString(character, realm)
+    character, realm = self:GetCharacterInfo(character, realm)
+    return string.format('%s-%s', character, realm)
+end
+
+function lib:SplitCharacterString(name)
+    return string.match(name, "(.+)-(.+)")
+end
+
+
+-- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
+function lib:ColorToRGB(color)
+    return 255*color['r'], 255*color['g'], 255*color['b']
+end
+
+function lib:GenerateHexColor(r, g, b)
+    return ("ff%.2x%.2x%.2x"):format(r, g, b);
+    -- return string.format('%02X%02X%02X', r, g, b)
+end
+
+-- Convert a color table with 0.0-1.0 floats to a RGB hex string
+function lib:ColorToHex(color)
+    local r, g, b = self:ColorToRGB(color)
+    return self:GenerateHexColor(r, g, b)
+end
+
+--/dump LibStub("BM-utils-1.0"):DifficultyToNum("medium")
+function lib:DifficultyToNum(difficulty)
+    local difficulties = {
+        ["optimal"]	= 4,
+        ["orange"]	= 4,
+        ["medium"]	= 3,
+        ["yellow"]	= 3,
+        ["easy"]	= 2,
+        ["green"]	= 2,
+        ["trivial"]	= 1,
+        ["gray"]	= 1,
+        ["grey"]	= 1,
+    }
+    return difficulties[difficulty]
+end
+
+--/dump LibStub("BM-utils-1.0"):DifficultyColor("medium")
+function lib:DifficultyColor(difficulty, return_ColorMixin)
+    local TradeSkillTypeColor = {}
+    TradeSkillTypeColor["optimal"]	= { r = 1.00, g = 0.50, b = 0.25, font = "GameFontNormalLeftOrange" };
+    TradeSkillTypeColor["medium"]	= { r = 1.00, g = 1.00, b = 0.00, font = "GameFontNormalLeftYellow" };
+    TradeSkillTypeColor["easy"]		= { r = 0.25, g = 0.75, b = 0.25, font = "GameFontNormalLeftLightGreen" };
+    TradeSkillTypeColor["trivial"]	= { r = 0.50, g = 0.50, b = 0.50, font = "GameFontNormalLeftGrey" };
+    TradeSkillTypeColor["header"]	= { r = 1.00, g = 0.82, b = 0,    font = "GameFontNormalLeft" };
+
+    if return_ColorMixin then
+        local colors = TradeSkillTypeColor[difficulty]
+        return CreateColor(colors['r'], colors['g'], colors['b'], 255)
+    else
+        return TradeSkillTypeColor[difficulty]
+    end
+end
+
+function lib:DifficultyColorText(text, difficulty)
+    local color = self:DifficultyColor(difficulty, true)
+    --text = CreateColor(colors['r'], colors['g'], colors['b'], 255):WrapTextInColorCode(text)
+    return color:WrapTextInColorCode(text)
+end
+
+--Extract itemId from a link
+function lib:ItemIdFromLink(itemLink)
+    return tonumber(string.match(itemLink, "item:(%d+)"))
+end
+
