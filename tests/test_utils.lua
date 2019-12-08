@@ -68,5 +68,27 @@ function test:testSplitCharacterString()
     lu.assertEquals(realm, 'MirageRaceway')
 end
 
+function test:testItemIdFromLink()
+    local id = utils:ItemIdFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
+    lu.assertEquals(id, 2318)
+end
+
+function test:testItemNameFromLink()
+    local id = utils:ItemNameFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
+    lu.assertEquals(id, 'Light Leather')
+end
+
+function test:testDifficultyColor()
+    local color = utils:DifficultyColor("optimal")
+    lu.assertEquals(color, { r = 1.00, g = 0.50, b = 0.25, font = "GameFontNormalLeftOrange" })
+    local r, g, b, alpha = utils:DifficultyColor("optimal", true)
+    lu.assertEquals(r, 1.00)
+    lu.assertEquals(g, 0.50)
+    lu.assertEquals(b, 0.25)
+    lu.assertEquals(alpha, 255)
+
+end
+
+
 os.exit( lu.LuaUnit.run() )
 

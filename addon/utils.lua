@@ -126,3 +126,6 @@ function lib:ItemIdFromLink(itemLink)
     return tonumber(string.match(itemLink, "item:(%d+)"))
 end
 
+function lib:ItemNameFromLink(itemLink)
+    return string.match(itemLink, "%[(.-)%]")
+end
