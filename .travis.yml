@@ -24,6 +24,7 @@ script:
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - cd $TRAVIS_BUILD_DIR
   - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.2
   - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
 
