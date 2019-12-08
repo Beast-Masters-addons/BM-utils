@@ -4,7 +4,7 @@ if not lib then
 end
 
 function lib:printf(str, ...)
-    DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
+    return DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
 end
 
 function lib:sprintf(str, ...)

@@ -25,6 +25,11 @@ function test:testDefaultFontColor()
     lu.assertEquals(b, 0.35)
 end
 
+function test:testSprintf()
+    local text = utils:sprintf('Quad%s', 'duo')
+    lu.assertEquals(text, 'Quadduo')
+end
+
 function test:testColorize()
     local text = utils:colorize('Quadduo', 'ff3fbf3f')
     lu.assertEquals(text, '|cff3fbf3fQuadduo|r')
@@ -33,6 +38,11 @@ end
 function test:testSprintf()
     local text = utils:sprintf('Quad%s', 'duo')
     lu.assertEquals(text, 'Quadduo')
+end
+
+function test:testIsWoWClassic()
+    local is_classic = utils:IsWoWClassic()
+    lu.assertEquals(is_classic, true)
 end
 
 function test:testColor_to_rgb()
