@@ -45,6 +45,14 @@ function test:testIsWoWClassic()
     lu.assertEquals(is_classic, true)
 end
 
+function test:testError()
+    local error, r, g, b = utils:error('this is bad')
+    lu.assertEquals(error, 'this is bad')
+    lu.assertEquals(r, 1)
+    lu.assertEquals(g, 0)
+    lu.assertEquals(b, 0)
+end
+
 function test:testColor_to_rgb()
     local r,g,b = utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(r, 63.75)

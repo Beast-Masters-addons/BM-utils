@@ -41,7 +41,7 @@ end
 
 -- Add a message to chat frame with red color
 function lib:error(message)
-    self:cprint(message, 255, 0,0)
+    return self:cprint(message, 1, 0,0)
 end
 
 -- Get character name and realm, fall back to current player if character not specified
