@@ -5,16 +5,7 @@
 ---
 local lu = require('luaunit')
 
-addon = {}
-debugstack = debug.traceback
-strmatch = string.match
-
-DEFAULT_CHAT_FRAME = {}
-function DEFAULT_CHAT_FRAME:AddMessage(str, r, g, b)
-    return str, r, g, b
-end
-
-loadfile('wow_functions.lua')
+loadfile('wow_functions.lua')()
 loadfile('../libs/LibStub/LibStub.lua')()
 loadfile('../addon/utils.lua')()
 local utils = LibStub('BM-utils-1.0')
