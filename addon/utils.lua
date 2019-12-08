@@ -1,4 +1,7 @@
 local lib = LibStub:NewLibrary("BM-utils-1.0", 1)
+if not lib then
+    return	-- already loaded and no upgrade necessary
+end
 
 function lib:printf(str, ...)
     DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
