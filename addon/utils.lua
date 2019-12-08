@@ -121,6 +121,11 @@ function lib:DifficultyColorText(text, difficulty)
     return color:WrapTextInColorCode(text)
 end
 
+--Reference:
+--https://wowwiki.fandom.com/wiki/UI_escape_sequences
+--https://wow.gamepedia.com/ItemLink
+--https://wowwiki.fandom.com/wiki/ItemLink
+
 --Extract itemId from a link
 function lib:ItemIdFromLink(itemLink)
     return tonumber(string.match(itemLink, "item:(%d+)"))
