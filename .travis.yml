@@ -10,6 +10,11 @@ before_install:
   - sudo luarocks install luaunit
   - sudo luarocks install luacov
 
+install:
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z
+  - cp -r tests .release/BM-utils
+  - cd .release/BM-utils
+
 before_script:
   - luacheck addon --no-color -q -g --no-self
 
