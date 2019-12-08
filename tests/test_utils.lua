@@ -53,6 +53,23 @@ function test:testError()
     lu.assertEquals(b, 0)
 end
 
+function test:testGetCharacterInfo()
+    local character, realm = utils:GetCharacterInfo()
+    lu.assertEquals(character, 'Quadduo')
+    lu.assertEquals(realm, 'MirageRaceway')
+
+    character, realm = utils:GetCharacterInfo('Quadgnome')
+    lu.assertEquals(character, 'Quadgnome')
+    lu.assertEquals(realm, 'MirageRaceway')
+end
+
+function test:testGetCharacterString()
+    local string = utils:GetCharacterString()
+    lu.assertEquals(string, 'Quadduo-MirageRaceway')
+    string = utils:GetCharacterString('Quadgnome')
+    lu.assertEquals(string, 'Quadgnome-MirageRaceway')
+end
+
 function test:testColor_to_rgb()
     local r,g,b = utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(r, 63.75)

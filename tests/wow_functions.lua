@@ -14,3 +14,13 @@ end
 function CreateColor(r, g, b, alpha)
     return r, g, b, alpha
 end
+
+function UnitName(unit)
+    if unit=="player" then
+        return "Quadduo"
+    end
+end
+
+function GetRealmName()
+    return "MirageRaceway"
+end
