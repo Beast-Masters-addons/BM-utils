@@ -13,16 +13,9 @@ local utils = LibStub('BM-utils-1.0')
 _G['test'] = {}
 local test = _G['test']
 
-function test:testDefaultFontColor()
-    local _, r, g, b = utils:cprint('test')
-    lu.assertEquals(r, 1)
-    lu.assertEquals(g, 1)
-    lu.assertEquals(b, 1)
-    utils:SetDefaultFontColor(0, 0.25, 0.35)
-    _, r, g, b = utils:cprint('test')
-    lu.assertEquals(r, 0)
-    lu.assertEquals(g, 0.25)
-    lu.assertEquals(b, 0.35)
+function test:testPrintf()
+    local text = utils:printf('Quad%s', 'duo')
+    lu.assertEquals(text, 'Quadduo')
 end
 
 function test:testSprintf()
@@ -35,9 +28,16 @@ function test:testColorize()
     lu.assertEquals(text, '|cff3fbf3fQuadduo|r')
 end
 
-function test:testSprintf()
-    local text = utils:sprintf('Quad%s', 'duo')
-    lu.assertEquals(text, 'Quadduo')
+function test:testDefaultFontColor()
+    local _, r, g, b = utils:cprint('test')
+    lu.assertEquals(r, 1)
+    lu.assertEquals(g, 1)
+    lu.assertEquals(b, 1)
+    utils:SetDefaultFontColor(0, 0.25, 0.35)
+    _, r, g, b = utils:cprint('test')
+    lu.assertEquals(r, 0)
+    lu.assertEquals(g, 0.25)
+    lu.assertEquals(b, 0.35)
 end
 
 function test:testIsWoWClassic()
