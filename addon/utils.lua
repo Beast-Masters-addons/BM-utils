@@ -21,13 +21,18 @@ function lib:colorize(str, rgb)
     return string.format('|c%s%s|r', rgb, str)
 end
 
+lib.DEFAULT_FONT_COLOR = {["R"]=1, ["G"]=1, ["B"]=1}
+function lib:SetDefaultFontColor(r, g, b)
+    self.DEFAULT_FONT_COLOR = {["R"]=r, ["G"]=g, ["B"]=b}
+end
+
 -- Add a message to chat frame with colors
+--/run LibStub('BM-utils-1.0'):cprint('red', 1, 0, 0)
 function lib:cprint(message, r, g, b)
-    local DEFAULT_FONT_COLOR = {["R"]=255, ["G"]=255, ["B"]=255}
-    DEFAULT_CHAT_FRAME:AddMessage(message,
-            (r or DEFAULT_FONT_COLOR["R"]),
-            (g or DEFAULT_FONT_COLOR["G"]),
-            (b or DEFAULT_FONT_COLOR["B"]));
+    return DEFAULT_CHAT_FRAME:AddMessage(message,
+            (r or self.DEFAULT_FONT_COLOR["R"]),
+            (g or self.DEFAULT_FONT_COLOR["G"]),
+            (b or self.DEFAULT_FONT_COLOR["B"]));
 end
 
 function lib:IsWoWClassic()

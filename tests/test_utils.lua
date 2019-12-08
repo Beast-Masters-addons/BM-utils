@@ -10,8 +10,8 @@ debugstack = debug.traceback
 strmatch = string.match
 
 DEFAULT_CHAT_FRAME = {}
-function DEFAULT_CHAT_FRAME:AddMessage(...)
-
+function DEFAULT_CHAT_FRAME:AddMessage(str, r, g, b)
+    return str, r, g, b
 end
 
 loadfile('wow_functions.lua')
@@ -21,6 +21,18 @@ local utils = LibStub('BM-utils-1.0')
 
 _G['test'] = {}
 local test = _G['test']
+
+function test:testDefaultFontColor()
+    local _, r, g, b = utils:cprint('test')
+    lu.assertEquals(r, 1)
+    lu.assertEquals(g, 1)
+    lu.assertEquals(b, 1)
+    utils:SetDefaultFontColor(0, 0.25, 0.35)
+    _, r, g, b = utils:cprint('test')
+    lu.assertEquals(r, 0)
+    lu.assertEquals(g, 0.25)
+    lu.assertEquals(b, 0.35)
+end
 
 function test:testColorize()
     local text = utils:colorize('Quadduo', 'ff3fbf3f')
