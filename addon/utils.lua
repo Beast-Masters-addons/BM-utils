@@ -1,6 +1,8 @@
 local lib = LibStub:NewLibrary("BM-utils-1.0", 1)
 if not lib then
+    -- luacov: disable
     return	-- already loaded and no upgrade necessary
+    -- luacov: enable
 end
 
 function lib:printf(str, ...)
@@ -128,6 +130,7 @@ end
 
 --Extract itemId from a link
 function lib:ItemIdFromLink(itemLink)
+    if itemLink == nil then return nil end
     return tonumber(string.match(itemLink, "item:(%d+)"))
 end
 
