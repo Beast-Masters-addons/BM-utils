@@ -88,6 +88,11 @@ function test:testColor_to_hex()
     lu.assertEquals(hex, 'ff3fbf3f')
 end
 
+function test:testDifficultyToNum()
+    local num = utils:DifficultyToNum("medium")
+    lu.assertEquals(num, 3)
+end
+
 function test:testSplitCharacterString()
     local character, realm = utils:SplitCharacterString('Quadduo-MirageRaceway')
     lu.assertEquals(character, 'Quadduo')
@@ -112,6 +117,11 @@ function test:testDifficultyColor()
     lu.assertEquals(r, 1.00)
     lu.assertEquals(g, 0.50)
     lu.assertEquals(b, 0.25)
+end
+
+function test:testDifficultyColorText()
+    local text = utils:DifficultyColorText('colored', 'medium')
+    lu.assertEquals(text, '|cffffff00colored|r')
 end
 
 
