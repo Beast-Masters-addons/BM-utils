@@ -45,3 +45,5 @@ icon*
 release
 .release
 *.out
+
+tests/Util.lua

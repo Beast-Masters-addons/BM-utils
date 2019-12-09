@@ -20,6 +20,7 @@ before_script:
 
 script:
   - cd tests
+  - wget https://raw.githubusercontent.com/Gethe/wow-ui-source/classic/SharedXML/Util.lua
   - lua -lluacov test_utils.lua
 
 after_success:
