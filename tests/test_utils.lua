@@ -107,12 +107,11 @@ end
 function test:testDifficultyColor()
     local color = utils:DifficultyColor("optimal")
     lu.assertEquals(color, { r = 1.00, g = 0.50, b = 0.25, font = "GameFontNormalLeftOrange" })
-    local r, g, b, alpha = utils:DifficultyColor("optimal", true)
+    local mixin = utils:DifficultyColor("optimal", true)
+    local r, g, b = mixin:GetRGB()
     lu.assertEquals(r, 1.00)
     lu.assertEquals(g, 0.50)
     lu.assertEquals(b, 0.25)
-    lu.assertEquals(alpha, 255)
-
 end
 
 
