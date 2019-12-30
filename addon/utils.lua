@@ -17,7 +17,7 @@ function lib:sprintf(str, ...)
     return string.format(str, ...)
 end
 
--- Add a message to chat frame with specified color
+--- Add a message to chat frame with specified color
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
 function lib:colorize(str, rgb)
@@ -32,8 +32,12 @@ function lib:SetDefaultFontColor(r, g, b)
     self.DEFAULT_FONT_COLOR = {["R"]=r, ["G"]=g, ["B"]=b}
 end
 
--- Add a message to chat frame with colors
 --/run LibStub('BM-utils-1.0'):cprint('red', 1, 0, 0)
+--- Add a message to chat frame with colors
+--- @param message string Message text
+--- @param r number Red
+--- @param g number Green
+--- @param b number Blue
 function lib:cprint(message, r, g, b)
     return DEFAULT_CHAT_FRAME:AddMessage(message,
             (r or self.DEFAULT_FONT_COLOR["R"]),
@@ -45,12 +49,13 @@ function lib:IsWoWClassic()
     return select(4, GetBuildInfo()) < 20000
 end
 
--- Add a message to chat frame with red color
+--- Add a message to chat frame with red color
+--- @param message string Message text
 function lib:error(message)
     return self:cprint(message, 1, 0,0)
 end
 
--- Get character name and realm, fall back to current player if character not specified
+--- Get character name and realm, fall back to current player if character not specified
 function lib:GetCharacterInfo(character, realm)
     if not character or character == "" then
         character = UnitName("player")
@@ -61,7 +66,7 @@ function lib:GetCharacterInfo(character, realm)
     return character, realm
 end
 
--- Get character name and realm as a string
+--- Get character name and realm as a string
 function lib:GetCharacterString(character, realm)
     character, realm = self:GetCharacterInfo(character, realm)
     return string.format('%s-%s', character, realm)
@@ -72,7 +77,7 @@ function lib:SplitCharacterString(name)
 end
 
 
--- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
+--- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
 function lib:ColorToRGB(color)
     return 255*color['r'], 255*color['g'], 255*color['b']
 end
@@ -132,12 +137,17 @@ end
 --https://wow.gamepedia.com/ItemLink
 --https://wowwiki.fandom.com/wiki/ItemLink
 
---Extract itemId from a link
+--- Extract itemId from a link
+--- @param itemLink string Item link
+--- @return number Item ID
 function lib:ItemIdFromLink(itemLink)
     if itemLink == nil then return nil end
     return tonumber(string.match(itemLink, "item:(%d+)"))
 end
 
+--- Get item name from item link
+--- @param itemLink string Item link
+--- @return string Item name
 function lib:ItemNameFromLink(itemLink)
     return string.match(itemLink, "%[(.-)%]")
 end
