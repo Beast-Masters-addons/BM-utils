@@ -151,3 +151,10 @@ end
 function lib:ItemNameFromLink(itemLink)
     return string.match(itemLink, "%[(.-)%]")
 end
+
+--- Localization safe method to cast spells
+--- @param spellId number The ID of the spell to cast
+function lib:CastSpellById(spellId)
+	local spellName = GetSpellInfo(spellId)
+	CastSpellByName(spellName)
+end
