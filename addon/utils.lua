@@ -1,4 +1,8 @@
-local lib = LibStub:NewLibrary("BM-utils-1.0", 1)
+local lib = {}
+if LibStub then
+	lib = LibStub:NewLibrary("BM-utils-1.0", 1)
+end
+_G['BMUtils'] = lib
 if not lib then
     -- luacov: disable
     return	-- already loaded and no upgrade necessary
