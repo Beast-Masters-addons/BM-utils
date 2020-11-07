@@ -8,7 +8,11 @@ function C_Timer:NewTicker(...) end
 
 
 function GetBuildInfo()
-    return "1.13.2", 32600, "Nov 20 2019", 11302
+    if os.getenv('CLASSIC_VERSION') then
+        return "1.13.2", 32600, "Nov 20 2019", 11302
+    else
+        return "9.0.1", "36492", "Oct 30 2020", 90001
+    end
 end
 
 DEFAULT_CHAT_FRAME = {}

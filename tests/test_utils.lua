@@ -6,7 +6,13 @@
 local lu = require('luaunit')
 
 loadfile('wow_functions.lua')()
-loadfile('Util.lua')()
+if os.getenv('CLASSIC_VERSION') then
+    loadfile('wow-ui-source/SharedXML/Util.lua')
+else
+    loadfile('wow-ui-source/SharedXML/Color.lua')()
+    loadfile('wow-ui-source/SharedXML/Mixin.lua')()
+end
+
 loadfile('../addon/utils.lua')()
 
 _G['test'] = {}
@@ -42,7 +48,7 @@ end
 
 function test:testIsWoWClassic()
     local is_classic = self.utils:IsWoWClassic()
-    lu.assertEquals(is_classic, true)
+    lu.assertEquals(is_classic, os.getenv('CLASSIC_VERSION') ~= nil)
 end
 
 function test:testError()
