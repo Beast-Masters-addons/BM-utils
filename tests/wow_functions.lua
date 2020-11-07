@@ -6,6 +6,12 @@ addon = {}
 C_Timer = {}
 function C_Timer:NewTicker(...) end
 
+if os.getenv('CLASSIC_VERSION') ~= nil then
+    loadfile('wow-ui-source/SharedXML/Util.lua')()
+else
+    loadfile('wow-ui-source/SharedXML/Color.lua')()
+    loadfile('wow-ui-source/SharedXML/Mixin.lua')()
+end
 
 function GetBuildInfo()
     if os.getenv('CLASSIC_VERSION') ~= nil then

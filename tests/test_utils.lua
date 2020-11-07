@@ -6,13 +6,6 @@
 local lu = require('luaunit')
 
 loadfile('wow_functions.lua')()
-if os.getenv('CLASSIC_VERSION') ~= nil then
-    loadfile('wow-ui-source/SharedXML/Util.lua')()
-else
-    loadfile('wow-ui-source/SharedXML/Color.lua')()
-    loadfile('wow-ui-source/SharedXML/Mixin.lua')()
-end
-
 loadfile('../addon/utils.lua')()
 
 _G['test'] = {}
