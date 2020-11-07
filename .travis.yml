@@ -38,4 +38,4 @@ before_script:
 script:
   - luacheck addon --no-color -q -g --no-self
   - cd tests
-  - lua -lluacov test_utils.lua
+  - find . -name test_\*.lua -exec lua -lluacov {} \;
