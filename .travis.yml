@@ -12,12 +12,14 @@ jobs:
         - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
 
     - name: 'Classic'
+      env:
+        - CLASSIC_VERSION="1.13.5"
       install:
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g 1.13.5
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $CLASSIC_VERSION
         - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
       after_success:
         - cd $TRAVIS_BUILD_DIR
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.5
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g $CLASSIC_VERSION
 
 addons:
   apt:
