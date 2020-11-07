@@ -30,3 +30,13 @@ end
 function GetRealmName()
     return "MirageRaceway"
 end
+
+function GetSpellInfo(spellId)
+    if spellId  == 186257 then
+        return "Aspect of the Cheetah", 132242, 0, 0, 0, 186257
+    end
+end
+
+function CastSpellByName(spellName)
+    return spellName
+end
