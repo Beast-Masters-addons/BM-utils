@@ -1,5 +1,6 @@
 _G['BMUtils'] = {}
 local lib = _G['BMUtils']
+lib.version = '@project-version@'
 
 if LibStub then
 	lib = LibStub:NewLibrary("BM-utils-1.0", 1)
