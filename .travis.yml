@@ -1,5 +1,24 @@
 language: minimal
 
+jobs:
+  include:
+    - name: 'Live'
+      install:
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z
+        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+        - cd $TRAVIS_BUILD_DIR
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
+
+    - name: 'Classic'
+      install:
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g 1.13.5
+        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
+      after_success:
+        - cd $TRAVIS_BUILD_DIR
+        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.5
+
 addons:
   apt:
     packages:
@@ -10,26 +29,11 @@ before_install:
   - sudo luarocks install luaunit
   - sudo luarocks install luacov
 
-install:
-  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z
+before_script:
   - cp -r tests .release/BM-utils
   - cd .release/BM-utils
 
-before_script:
-  - luacheck addon --no-color -q -g --no-self
-
 script:
+  - luacheck addon --no-color -q -g --no-self
   - cd tests
-  - wget https://raw.githubusercontent.com/Gethe/wow-ui-source/classic/SharedXML/Util.lua
   - lua -lluacov test_utils.lua
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - cd $TRAVIS_BUILD_DIR
-  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g 1.13.2
-  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always
