@@ -129,7 +129,7 @@ function test:testDifficultyColorText()
     lu.assertEquals(text, '|cffffff00colored|r')
 end
 
-function test:CastSpellById()
+function test:testCastSpellById()
     local spell = self.utils:CastSpellById(186257)
     lu.assertEquals(spell, 'Aspect of the Cheetah')
 end
