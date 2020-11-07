@@ -19,15 +19,21 @@ function lib:sprintf(str, ...)
     return string.format(str, ...)
 end
 
-function lib:version_check(version, wanted_major, wanted_minor)
+function lib:parse_version(version)
     local major, minor = version:match('v(%d+).(%d+)')
     major = tonumber(major)
     minor = tonumber(minor)
+    return major, minor
+end
+
+function lib:version_check(version, wanted_major, wanted_minor)
+    local major, minor = self:parse_version(version)
 
     if wanted_major ~= major then
         return false, lib:sprintf('Required major version %s, loaded is %s', wanted_major, major)
     elseif wanted_minor > minor then
-        return false, lib:sprintf('Required at least version %d.%d, loaded version is %d.%d (%s)', wanted_major, wanted_minor, major, minor, version)
+        return false, lib:sprintf('Required at least version %d.%d, loaded version is %d.%d (%s)',
+                wanted_major, wanted_minor, major, minor, version)
     else
         return true
     end

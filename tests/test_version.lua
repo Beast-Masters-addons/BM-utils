@@ -5,6 +5,12 @@ _G['test'] = {}
 local test = _G['test']
 test.utils = _G['BMUtils']
 
+function test:testParseVersion()
+    local major, minor = self.utils:parse_version('v2.1.1')
+    lu.assertEquals(major, 2)
+    lu.assertEquals(minor, 1)
+end
+
 function test:testInvalidMajorVersion()
     local status, message = self.utils:version_check('v1.1.1', 2, 1)
     lu.assertEquals(message, 'Required major version 2, loaded is 1')
