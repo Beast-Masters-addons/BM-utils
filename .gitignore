@@ -46,4 +46,4 @@ release
 .release
 *.out
 
-tests/Util.lua
+tests/wow-ui-source
