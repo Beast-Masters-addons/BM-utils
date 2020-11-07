@@ -7,7 +7,6 @@ local lu = require('luaunit')
 
 loadfile('wow_functions.lua')()
 loadfile('Util.lua')()
-loadfile('../libs/LibStub/LibStub.lua')()
 loadfile('../addon/utils.lua')()
 
 _G['test'] = {}
