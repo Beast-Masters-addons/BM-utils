@@ -19,6 +19,20 @@ function lib:sprintf(str, ...)
     return string.format(str, ...)
 end
 
+function lib:version_check(version, wanted_major, wanted_minor)
+    local major, minor = version:match('v(%d+).(%d+)')
+    major = tonumber(major)
+    minor = tonumber(minor)
+
+    if wanted_major ~= major then
+        return false, lib:sprintf('Required major version %s, loaded is %s', wanted_major, major)
+    elseif wanted_minor > minor then
+        return false, lib:sprintf('Required at least version %d.%d, loaded version is %d.%d (%s)', wanted_major, wanted_minor, major, minor, version)
+    else
+        return true
+    end
+end
+
 --- Add a message to chat frame with specified color
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
