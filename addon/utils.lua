@@ -1,9 +1,13 @@
 _G['BMUtils'] = {}
+_G['BMUtils-@project-version@'] = _G['BMUtils']
 local lib = _G['BMUtils']
 lib.version = '@project-version@'
 
 if LibStub then
-	lib = LibStub:NewLibrary("BM-utils-1.0", 1)
+    local major, minor = string.match('@project-version@', 'v(%d+).(%d+)')
+    major = tonumber(major)
+    minor = tonumber(minor)
+	lib = LibStub:NewLibrary("BM-utils-"..major, minor)
 end
 
 if not lib then
