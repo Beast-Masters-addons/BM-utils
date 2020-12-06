@@ -12,8 +12,8 @@ jobs:
         - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
 
     - name: 'Classic'
-      env:
-        - CLASSIC_VERSION="1.13.6"
+      before_install:
+        - export CLASSIC_VERSION="1.13.6"
       install:
         - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $CLASSIC_VERSION
         - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
