@@ -9,5 +9,7 @@
 ## Title: Lib: Beast Masters utilities
 ## Notes: Utilities used in my addons
 ## X-GitHubURL = https://github.com/Beast-Masters-addons/BM-utils
+## SavedVariables: Characters
 
+addon/BeastInfo.lua
 addon/utils.lua
