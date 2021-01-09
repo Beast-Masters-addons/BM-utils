@@ -44,10 +44,24 @@ function lib:version_check(version, wanted_major, wanted_minor)
     end
 end
 
---- Add a message to chat frame with specified color
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
-function lib:colorize(str, rgb)
+--- Add the specified color to a string
+--- @param str string Text to be colorized
+--- @param r number|string Red or RGB string
+--- @param g number Green
+--- @param b number Blue
+---@return string String with color
+function lib:colorize(str, r, g, b)
+    local rgb
+    if type(r) == type(g) and type(g) == type(b) and type(r) == 'number' then
+        rgb = self:GenerateHexColor(r, g, b)
+    elseif type(r) == 'string' and g == nil and b == nil then
+        rgb = r
+    else
+        error('Invalid arguments')
+    end
+
     --@debug@
     self:printf('RGB: %s', rgb)
     --@end-debug@
@@ -105,7 +119,18 @@ end
 
 
 --- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
-function lib:ColorToRGB(color)
+--- @param r number|table Red or table with r, g and b as keys
+--- @param g number Green
+--- @param b number Blue
+---@return number, number, number
+function lib:ColorToRGB(r, g, b)
+    local color
+    if type(r) == 'table' then
+        color = r
+    else
+        color = {r=r, g=g, b=b}
+    end
+
     return 255*color['r'], 255*color['g'], 255*color['b']
 end
 
