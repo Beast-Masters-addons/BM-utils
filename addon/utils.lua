@@ -26,8 +26,16 @@ end
 
 function lib:parse_version(version)
     local major, minor = version:match('v(%d+).(%d+)')
-    major = tonumber(major)
-    minor = tonumber(minor)
+    if major ~=nil then
+        major = tonumber(major)
+    else
+        major = 0
+    end
+    if minor ~= nil then
+        minor = tonumber(minor)
+    else
+        minor = 0
+    end
     return major, minor
 end
 
