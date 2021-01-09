@@ -7,3 +7,5 @@ externals:
 
 ignore:
   - tests
+
+enable-nolib-creation: yes
