@@ -11,5 +11,5 @@
 ## X-GitHubURL = https://github.com/Beast-Masters-addons/BM-utils
 ## SavedVariables: Characters
 
-addon/utils.lua
-addon/CharacterData.lua
+addon\utils.lua
+addon\CharacterData.lua
