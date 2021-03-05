@@ -3,8 +3,8 @@ _G['BMUtils-@project-version@'] = _G['BMUtils']
 local lib = _G['BMUtils']
 lib.version = '@project-version@'
 lib.v_major, lib.v_minor = _G['BMUtils-Version'].parse_version(lib.version)
-if LibStub then
-	lib = LibStub:NewLibrary("BM-utils-"..lib.v_major, lib.v_minor)
+if _G.LibStub then
+	lib = _G.LibStub:NewLibrary("BM-utils-"..lib.v_major, lib.v_minor)
 end
 
 if not lib then
@@ -14,7 +14,7 @@ if not lib then
 end
 
 function lib:printf(str, ...)
-    return DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
+    return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
 end
 
 function lib:sprintf(str, ...)
@@ -86,14 +86,14 @@ end
 --- @param g number Green
 --- @param b number Blue
 function lib:cprint(message, r, g, b)
-    return DEFAULT_CHAT_FRAME:AddMessage(message,
+    return _G.DEFAULT_CHAT_FRAME:AddMessage(message,
             (r or self.DEFAULT_FONT_COLOR["R"]),
             (g or self.DEFAULT_FONT_COLOR["G"]),
             (b or self.DEFAULT_FONT_COLOR["B"]));
 end
 
 function lib:IsWoWClassic()
-    return select(4, GetBuildInfo()) < 20000
+    return select(4, _G.GetBuildInfo()) < 20000
 end
 
 --- Add a message to chat frame with red color
@@ -105,10 +105,10 @@ end
 --- Get character name and realm, fall back to current player if character not specified
 function lib:GetCharacterInfo(character, realm)
     if not character or character == "" then
-        character = UnitName("player")
+        character = _G.UnitName("player")
     end
     if not realm then
-        realm = GetRealmName()
+        realm = _G.GetRealmName()
     end
     return character, realm
 end
@@ -178,7 +178,7 @@ function lib:DifficultyColor(difficulty, return_ColorMixin)
 
     if return_ColorMixin then
         local colors = TradeSkillTypeColor[difficulty]
-        return CreateColor(colors['r'], colors['g'], colors['b'], 255)
+        return _G.CreateColor(colors['r'], colors['g'], colors['b'], 255)
     else
         return TradeSkillTypeColor[difficulty]
     end
@@ -213,6 +213,6 @@ end
 --- Localization safe method to cast spells
 --- @param spellId number The ID of the spell to cast
 function lib:CastSpellById(spellId)
-	local spellName = GetSpellInfo(spellId)
-	return CastSpellByName(spellName)
+	local spellName = _G.GetSpellInfo(spellId)
+	return _G.CastSpellByName(spellName)
 end
