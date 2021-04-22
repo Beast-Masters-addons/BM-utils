@@ -3,6 +3,7 @@ local lib = _G['BMUtils-Version']
 lib.version = '@project-version@'
 
 function lib.parse_version(version)
+    assert(version, 'Version is nil')
     local major, minor = version:match('v(%d+).(%d+)')
     if major ~= nil then
         major = tonumber(major)
