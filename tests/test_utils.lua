@@ -52,7 +52,12 @@ end
 
 function test:testIsWoWClassic()
     local is_classic = self.utils:IsWoWClassic()
-    lu.assertEquals(is_classic, os.getenv('CLASSIC_VERSION') ~= nil)
+    lu.assertEquals(is_classic, os.getenv('GAME_VERSION') ~= 'retail')
+end
+
+function test:testIsWoWClassicNotTBC()
+    local is_classic = self.utils:IsWoWClassic(false)
+    lu.assertEquals(is_classic, os.getenv('GAME_VERSION') == 'classic')
 end
 
 function test:testError()
