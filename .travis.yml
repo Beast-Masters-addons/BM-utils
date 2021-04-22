@@ -4,22 +4,18 @@ jobs:
   include:
     - name: 'Live'
       install:
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z
+        - export GAME_VERSION="retail"
         - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-        - cd $TRAVIS_BUILD_DIR
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash
 
     - name: 'Classic'
       install:
-        - export CLASSIC_VERSION="1.13.6"
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $CLASSIC_VERSION
+        - export GAME_VERSION="classic"
         - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-        - cd $TRAVIS_BUILD_DIR
-        - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g $CLASSIC_VERSION
+
+    - name: 'TBC'
+      install:
+        - export GAME_VERSION="bc"
+        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic_beta
 
 addons:
   apt:
@@ -32,6 +28,7 @@ before_install:
   - sudo luarocks install luacov
 
 before_script:
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $GAME_VERSION
   - cp -r tests .release/BM-utils
   - cd .release/BM-utils
 
@@ -40,3 +37,9 @@ script:
   - cd tests
   - lua -lluacov test_version.lua
   - lua -lluacov test_utils.lua
+
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - cd $TRAVIS_BUILD_DIR
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g $GAME_VERSION
