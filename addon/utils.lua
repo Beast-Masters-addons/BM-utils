@@ -64,8 +64,12 @@ function lib:cprint(message, r, g, b)
             (b or self.DEFAULT_FONT_COLOR["B"]));
 end
 
-function lib:IsWoWClassic()
-    return select(4, _G.GetBuildInfo()) < 20000
+function lib:IsWoWClassic(allow_tbc)
+    if allow_tbc == nil or allow_tbc == true then
+        return select(4, _G.GetBuildInfo()) < 30000
+    else
+        return select(4, _G.GetBuildInfo()) < 20000
+    end
 end
 
 --- Add a message to chat frame with red color
