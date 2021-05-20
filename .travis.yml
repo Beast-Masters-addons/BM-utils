@@ -10,12 +10,12 @@ jobs:
     - name: 'Classic'
       install:
         - export GAME_VERSION="classic"
-        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
+        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic_era
 
     - name: 'TBC'
       install:
         - export GAME_VERSION="bcc"
-        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic_beta
+        - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic
 
 addons:
   apt:
