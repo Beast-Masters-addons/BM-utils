@@ -14,7 +14,7 @@ jobs:
 
     - name: 'TBC'
       install:
-        - export GAME_VERSION="bc"
+        - export GAME_VERSION="bcc"
         - git clone https://github.com/Gethe/wow-ui-source tests/wow-ui-source -b classic_beta
 
 addons:
