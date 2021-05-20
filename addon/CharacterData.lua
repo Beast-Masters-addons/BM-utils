@@ -1,3 +1,4 @@
+---@class CharacterData
 _G['CharacterData'] = {}
 local Character = _G['CharacterData']
 
