@@ -1,5 +1,6 @@
 _G['BMUtils'] = {}
 _G['BMUtils-@project-version@'] = _G['BMUtils']
+---@class BMUtils
 local lib = _G['BMUtils']
 lib.version = '@project-version@'
 lib.v_major, lib.v_minor = _G['BMUtils-Version'].parse_version(lib.version)

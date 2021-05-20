@@ -1,4 +1,5 @@
 _G['BMUtils-Version'] = {}
+---@class BMUtils_version
 local lib = _G['BMUtils-Version']
 lib.version = '@project-version@'
 
