@@ -33,6 +33,11 @@ function test:testColorizeInt()
     lu.assertEquals(text, '|cff3fbf3fQuadduo|r')
 end
 
+function test:testColorizeInt10()
+    local text = self.utils:colorize('Quadduo', 255, 0, 0)
+    lu.assertEquals(text, '|cffff0000Quadduo|r')
+end
+
 function test:testColorize1()
     local text = self.utils:colorize('Quadduo', self.utils:ColorToRGB(0, 0.5, 1))
     lu.assertEquals(text, '|cff007fffQuadduo|r')
