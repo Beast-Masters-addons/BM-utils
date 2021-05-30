@@ -21,6 +21,10 @@ end
 
 function locale:ngettext(singular, plural, num)
     local rule = self.strings['_plurals']
+    if rule == nil then
+        rule = '(n != 1)'
+    end
+
     if rule == '(n > 1)' and num > 1 then
         return self:gettext(plural)
     elseif rule == '(n != 1)' and num ~= 1 then
