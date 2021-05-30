@@ -14,6 +14,9 @@ if not lib then
     -- luacov: enable
 end
 
+---@type BMGettext
+lib.gettext = _G['BMUtils-gettext-@version@']
+
 function lib:printf(str, ...)
     return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
 end

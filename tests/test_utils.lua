@@ -143,6 +143,10 @@ function test:testCastSpellById()
     lu.assertEquals(spell, 'Aspect of the Cheetah')
 end
 
+function test:gettext()
+    lu.assertNotNil(self.utils.gettext)
+end
+
 
 os.exit( lu.LuaUnit.run() )
 
