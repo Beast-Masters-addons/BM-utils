@@ -28,7 +28,7 @@ before_install:
   - sudo luarocks install luacov
 
 before_script:
-  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -g $GAME_VERSION
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -d -z -e -g $GAME_VERSION
   - cp -r tests .release/BM-utils
   - cd .release/BM-utils
 
@@ -42,4 +42,4 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - cd $TRAVIS_BUILD_DIR
-  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -g $GAME_VERSION
+  - curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh | bash -s -- -e -g $GAME_VERSION
