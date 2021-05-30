@@ -37,6 +37,7 @@ script:
   - cd tests
   - lua -lluacov test_version.lua
   - lua -lluacov test_utils.lua
+  - lua -lluacov test_gettext.lua
 
 
 after_success:
