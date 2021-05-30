@@ -1,8 +1,11 @@
----class BMGettext A simple gettext implementation for use in WoW addons
 _G['BMUtils-gettext-@version@'] = {}
-local locale = _G['BMUtils-gettext-@version@']
+---@class BMGettext A simple gettext implementation for use in WoW addons
+local gettext = _G['BMUtils-gettext-@version@']
 
-function locale:load(locales)
+gettext.locales = {}
+gettext.strings = {}
+
+function gettext:load(locales)
     local localeName = _G.GetLocale()
     if locales[localeName] ~= nil then
         self.strings = locales[localeName]
@@ -11,7 +14,7 @@ function locale:load(locales)
     end
 end
 
-function locale:gettext(str)
+function gettext:gettext(str)
     if self.strings[str] ~= nil then
         return self.strings[str]
     else
@@ -19,7 +22,7 @@ function locale:gettext(str)
     end
 end
 
-function locale:ngettext(singular, plural, num)
+function gettext:ngettext(singular, plural, num)
     local rule = self.strings['_plurals']
     if rule == nil then
         rule = '(n != 1)'
