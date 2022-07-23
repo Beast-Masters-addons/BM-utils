@@ -101,7 +101,7 @@ function test:testGetCharacterString()
 end
 
 function test:testColor_to_rgb()
-    local r,g,b = self.utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
+    local r, g, b = self.utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(r, 63.75)
     lu.assertEquals(g, 191.25)
     lu.assertEquals(b, 63.75)
@@ -162,6 +162,5 @@ function test:gettext()
     lu.assertNotNil(self.utils.gettext)
 end
 
-
-os.exit( lu.LuaUnit.run() )
+os.exit(lu.LuaUnit.run())
 

@@ -5,12 +5,12 @@ local lib = _G['BMUtils']
 lib.version = '@project-version@'
 lib.v_major, lib.v_minor = _G['BMUtils-Version'].parse_version(lib.version)
 if _G.LibStub then
-	lib = _G.LibStub:NewLibrary("BM-utils-"..lib.v_major, lib.v_minor)
+    lib = _G.LibStub:NewLibrary("BM-utils-" .. lib.v_major, lib.v_minor)
 end
 
 if not lib then
     -- luacov: disable
-    return	-- already loaded and no upgrade necessary
+    return    -- already loaded and no upgrade necessary
     -- luacov: enable
 end
 
@@ -65,9 +65,9 @@ function lib:colorize(str, r, g, b)
     return string.format('|c%s%s|r', rgb, str)
 end
 
-lib.DEFAULT_FONT_COLOR = {["R"]=1, ["G"]=1, ["B"]=1}
+lib.DEFAULT_FONT_COLOR = { ["R"] = 1, ["G"] = 1, ["B"] = 1 }
 function lib:SetDefaultFontColor(r, g, b)
-    self.DEFAULT_FONT_COLOR = {["R"]=r, ["G"]=g, ["B"]=b}
+    self.DEFAULT_FONT_COLOR = { ["R"] = r, ["G"] = g, ["B"] = b }
 end
 
 --/run LibStub('BM-utils-1.0'):cprint('red', 1, 0, 0)
@@ -94,7 +94,7 @@ end
 --- Add a message to chat frame with red color
 --- @param message string Message text
 function lib:error(message)
-    return self:cprint(message, 1, 0,0)
+    return self:cprint(message, 1, 0, 0)
 end
 
 --- Get character name and realm, fall back to current player if character not specified
@@ -118,7 +118,6 @@ function lib:SplitCharacterString(name)
     return string.match(name, "(.+)-(.+)")
 end
 
-
 --- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
 --- @param r number|table Red or table with r, g and b as keys
 --- @param g number Green
@@ -129,10 +128,10 @@ function lib:ColorToRGB(r, g, b)
     if type(r) == 'table' then
         color = r
     else
-        color = {r=r, g=g, b=b}
+        color = { r = r, g = g, b = b }
     end
 
-    return 255*color['r'], 255*color['g'], 255*color['b']
+    return 255 * color['r'], 255 * color['g'], 255 * color['b']
 end
 
 function lib:GenerateHexColor(r, g, b)
@@ -194,7 +193,9 @@ end
 --- @param itemLink string Item link
 --- @return number Item ID
 function lib:ItemIdFromLink(itemLink)
-    if itemLink == nil then return nil end
+    if itemLink == nil then
+        return nil
+    end
     return tonumber(string.match(itemLink, "item:(%d+)"))
 end
 
@@ -208,6 +209,6 @@ end
 --- Localization safe method to cast spells
 --- @param spellId number The ID of the spell to cast
 function lib:CastSpellById(spellId)
-	local spellName = _G.GetSpellInfo(spellId)
-	return _G.CastSpellByName(spellName)
+    local spellName = _G.GetSpellInfo(spellId)
+    return _G.CastSpellByName(spellName)
 end
