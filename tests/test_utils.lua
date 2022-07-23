@@ -23,6 +23,16 @@ function test:testSprintf()
     lu.assertEquals(text, 'Quadduo')
 end
 
+function test:testEmpty()
+    lu.assertTrue(self.utils:empty(''))
+    lu.assertTrue(self.utils:empty(nil))
+    lu.assertTrue(self.utils:empty({}))
+    lu.assertTrue(self.utils:empty(false))
+    lu.assertFalse(self.utils:empty({ test = 2 }))
+    lu.assertFalse(self.utils:empty('test'))
+    lu.assertFalse(self.utils:empty(true))
+end
+
 function test:testColorize()
     local text = self.utils:colorize('Quadduo', 'ff3fbf3f')
     lu.assertEquals(text, '|cff3fbf3fQuadduo|r')

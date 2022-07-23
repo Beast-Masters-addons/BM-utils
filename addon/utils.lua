@@ -25,6 +25,21 @@ function lib:sprintf(str, ...)
     return string.format(str, ...)
 end
 
+local next = _G.next
+--- Check if a value if empty
+function lib:empty(value)
+    if value == nil then
+        return true
+    elseif type(value) == 'table' then
+        return next(value) == nil
+    elseif type(value) == 'string' then
+        return value == ''
+    elseif type(value) == 'boolean' then
+        return not value
+    end
+    return false
+end
+
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
 --- Add the specified color to a string
