@@ -6,6 +6,16 @@ addon = {}
 C_Timer = {}
 function C_Timer:NewTicker(...) end
 
+
+C_UIColor = {}
+function C_UIColor.GetColors()
+    return {}
+end
+
+function Round(value)
+    return math.ceil(value)
+end
+
 loadfile('wow-ui-source/Interface/SharedXML/Color.lua')()
 loadfile('wow-ui-source/Interface/SharedXML/Mixin.lua')()
 
