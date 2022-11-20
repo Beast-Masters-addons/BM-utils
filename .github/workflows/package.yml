@@ -47,7 +47,7 @@ jobs:
 
       - name: Download classic UI source
         if: matrix.game_version == 'classic'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -55,7 +55,7 @@ jobs:
 
       - name: Download Burning Crusade Classic UI source
         if: matrix.game_version == 'bcc'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -63,7 +63,7 @@ jobs:
 
       - name: Download retail UI source
         if: matrix.game_version == 'retail'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -79,7 +79,7 @@ jobs:
           GAME_VERSION: ${{ matrix.game_version }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
 
   build:
     runs-on: ubuntu-latest
@@ -100,8 +100,6 @@ jobs:
 
       - name: WoW Packager
         uses: BigWigsMods/packager@v2.1.0
-        with:
-          args: -g ${{ matrix.game_version }}
 
       - uses: actions/upload-artifact@v3
         with:
