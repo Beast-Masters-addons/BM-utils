@@ -6,7 +6,7 @@ local container = {}
 lib.container = container
 
 local is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
-print('is classic', is_classic)
+
 ---Returns the total number of slots in the bag specified by the index.
 ---@param bagID int The slot containing the bag, e.g. 0 for backpack, etc.
 function container.GetContainerNumSlots(bagID)
