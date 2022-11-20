@@ -1,4 +1,5 @@
 package-as: BM-utils
+enable-toc-creation: yes
 
 externals:
   libs/LibStub:
@@ -7,5 +8,6 @@ externals:
 
 ignore:
   - tests
+  - libs/LibStub/tests
 
 enable-nolib-creation: yes
