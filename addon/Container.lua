@@ -19,8 +19,8 @@ end
 
 function container.GetContainerItemInfo(bagID, slot)
     if is_classic then
-        local icon, itemCount, locked, quality, readable, lootable, itemLink, isFiltered, noValue, itemID, isBound = _G.GetContainerItemInfo(bagID, slot)
-        print('itemID', itemID)
+        local icon, itemCount, locked, quality, readable, lootable,
+        itemLink, isFiltered, noValue, itemID, isBound = _G.GetContainerItemInfo(bagID, slot)
         return {
             hasLoot = lootable,
             hyperlink = itemLink,
