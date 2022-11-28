@@ -1,9 +1,7 @@
----@type BMUtils
-local lib = _G['BMUtils-@project-version@']
-
 ---@class BMUtilsContainer Container API polyfill for WoW Classic
-local container = {}
-lib.container = container
+_G['BMUtils-container-@version@'] = {}
+---@type BMUtils
+local container = _G['BMUtils-container-@version@']
 
 local is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
 
