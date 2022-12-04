@@ -2,10 +2,10 @@ _G['BMUtils'] = {}
 _G['BMUtils-@project-version@'] = _G['BMUtils']
 ---@class BMUtils
 local lib = _G['BMUtils']
-lib.version = '@project-version@'
-lib.v_major, lib.v_minor = _G['BMUtils-Version'].parse_version(lib.version)
+local version = '@project-version@'
+local v_major, v_minor = _G['BMUtils-Version'].parse_version(version)
 if _G.LibStub then
-    lib = _G.LibStub:NewLibrary("BM-utils-" .. lib.v_major, lib.v_minor)
+    lib = _G.LibStub:NewLibrary("BM-utils-" .. v_major, v_minor)
 end
 
 if not lib then
@@ -13,9 +13,13 @@ if not lib then
     return    -- already loaded and no upgrade necessary
     -- luacov: enable
 end
+lib.version = version
+lib.v_major, lib.v_minor = v_major, v_minor
 
 ---@type BMGettext
 lib.gettext = _G['BMUtils-gettext-@version@']
+---@type BMUtilsContainer
+lib.container = _G['BMUtils-container-@version@']
 
 function lib:printf(str, ...)
     return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
