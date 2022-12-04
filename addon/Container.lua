@@ -36,3 +36,11 @@ function container.GetContainerItemInfo(bagID, slot)
         return _G.C_Container.GetContainerItemInfo(bagID, slot)
     end
 end
+
+function container.PickupContainerItem(containerIndex, slotIndex)
+    if is_classic then
+        return _G.PickupContainerItem(containerIndex, slotIndex)
+    else
+        return _G.C_Container.PickupContainerItem(containerIndex, slotIndex)
+    end
+end
