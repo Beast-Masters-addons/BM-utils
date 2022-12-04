@@ -1,9 +1,6 @@
----@type BMUtils
-local lib = _G['BMUtils-@project-version@']
-
 ---@class BMUtilBasic Basic utilities from other programming languages missing in lua
-local basic = {}
-lib.basic = basic
+_G['BMUtils-basic-@version@'] = {}
+local basic = _G['BMUtils-basic-@version@']
 
 function basic.parseFloat(float)
     if _G.DECIMAL_SEPERATOR ~= '.' then

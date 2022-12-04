@@ -3,5 +3,6 @@
     <Script file="addon\version.lua"/>
     <Script file="addon\gettext.lua"/>
     <Script file="addon\Container.lua"/>
+    <Script file="addon\basic.lua"/>
     <Script file="addon\utils.lua"/>
 </Ui>

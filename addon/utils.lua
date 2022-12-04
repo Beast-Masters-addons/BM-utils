@@ -20,6 +20,8 @@ lib.v_major, lib.v_minor = v_major, v_minor
 lib.gettext = _G['BMUtils-gettext-@version@']
 ---@type BMUtilsContainer
 lib.container = _G['BMUtils-container-@version@']
+---@type BMUtilBasic
+lib.basic = _G['BMUtils-basic-@version@']
 
 function lib:printf(str, ...)
     return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
