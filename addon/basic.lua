@@ -14,5 +14,5 @@ function basic.formatFloat(float)
 end
 
 function basic.isFloat(num)
-    return num % 1 == 0
+    return num % 1 ~= 0
 end
