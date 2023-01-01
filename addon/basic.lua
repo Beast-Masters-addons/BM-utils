@@ -8,8 +8,10 @@ end
 
 ---@class BMUtilBasic Basic utilities from other programming languages missing in lua
 addon.basic = {}
+---@type BMUtilBasic
 local basic = addon.basic
 
+---Parse a float from a string with localized decimal separator
 function basic.parseFloat(float)
     if _G.DECIMAL_SEPERATOR ~= '.' then
         float = float:gsub(_G.DECIMAL_SEPERATOR, '.')
@@ -17,10 +19,12 @@ function basic.parseFloat(float)
     return tonumber(float)
 end
 
+---Format a float as a string with localized decimal separator
 function basic.formatFloat(float)
     return tostring(float):gsub('%.', _G.DECIMAL_SEPERATOR)
 end
 
+---Check if a number is a decimal number
 function basic.isFloat(num)
     return num % 1 ~= 0
 end
