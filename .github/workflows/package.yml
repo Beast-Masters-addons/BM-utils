@@ -47,6 +47,14 @@ jobs:
       - name: Run luacheck
         run: luacheck addon --no-self
 
+      - name: Build the addon
+        uses: BigWigsMods/packager@v2.1.0
+        with:
+          args: -g ${{ matrix.game_version }} -z -d
+
+      - name: Move libraries
+        run: mv .release/BM-utils/libs .
+
       - name: Download classic UI source
         if: matrix.game_version == 'classic'
         uses: actions/checkout@v3
