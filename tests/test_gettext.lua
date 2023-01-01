@@ -35,5 +35,13 @@ function test:testNGettext2()
     lu.assertEquals(gettext:ngettext('string', 'strings', 2), 'strings')
 end
 
+function test:testNGettextDefaultRule()
+    gettext.strings['_plurals'] = nil
+
+    lu.assertEquals(gettext:ngettext('string', 'strings', 0), 'strings')
+    lu.assertEquals(gettext:ngettext('string', 'strings', 1), 'string')
+    lu.assertEquals(gettext:ngettext('string', 'strings', 2), 'strings')
+end
+
 os.exit(lu.LuaUnit.run())
 
