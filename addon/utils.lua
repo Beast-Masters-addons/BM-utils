@@ -14,7 +14,6 @@ function lib:sprintf(str, ...)
     return string.format(str, ...)
 end
 
-local next = _G.next
 --- Check if a value if empty
 function lib:empty(value)
     return self.basic.empty(value)
@@ -39,9 +38,6 @@ function lib:colorize(str, r, g, b)
         error('Invalid arguments')
     end
 
-    --@debug@
-    self:printf('RGB: %s', rgb)
-    --@end-debug@
     return string.format('|c%s%s|r', rgb, str)
 end
 
