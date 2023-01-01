@@ -31,6 +31,8 @@ function test:testEmpty()
     lu.assertFalse(self.utils:empty({ test = 2 }))
     lu.assertFalse(self.utils:empty('test'))
     lu.assertFalse(self.utils:empty(true))
+    lu.assertFalse(self.utils:empty({ first = nil, key = false })
+    )
 end
 
 function test:testColorize()
