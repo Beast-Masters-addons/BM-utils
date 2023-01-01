@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'bcc', 'retail' ]
+        game_version: [ 'classic', 'wrath', 'retail' ]
 
 
     steps:
@@ -55,8 +55,8 @@ jobs:
           path: tests/wow-ui-source
           ref: 'classic_era'
 
-      - name: Download Burning Crusade Classic UI source
-        if: matrix.game_version == 'bcc'
+      - name: Download Wrath Classic UI source
+        if: matrix.game_version == 'wrath'
         uses: actions/checkout@v3
         with:
           repository: Gethe/wow-ui-source
