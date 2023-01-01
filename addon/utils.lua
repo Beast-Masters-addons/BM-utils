@@ -17,16 +17,7 @@ end
 local next = _G.next
 --- Check if a value if empty
 function lib:empty(value)
-    if value == nil then
-        return true
-    elseif type(value) == 'table' then
-        return next(value) == nil
-    elseif type(value) == 'string' then
-        return value == ''
-    elseif type(value) == 'boolean' then
-        return not value
-    end
-    return false
+    return self.basic.empty(value)
 end
 
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))

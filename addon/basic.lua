@@ -24,3 +24,18 @@ end
 function basic.isFloat(num)
     return num % 1 ~= 0
 end
+
+local next = _G.next
+--- Check if a value if empty
+function basic.empty(value)
+    if value == nil then
+        return true
+    elseif type(value) == 'table' then
+        return next(value) == nil
+    elseif type(value) == 'string' then
+        return value == ''
+    elseif type(value) == 'boolean' then
+        return not value
+    end
+    return false
+end
