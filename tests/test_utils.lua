@@ -6,12 +6,13 @@
 local lu = require('luaunit')
 
 loadfile('wow_functions.lua')()
-loadfile('../addon/version.lua')()
-loadfile('../addon/utils.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
+---@type BMUtils
+local addon =_G['AddonTable']
 
 _G['test'] = {}
 local test = _G['test']
-test.utils = _G['BMUtils']
+test.utils = addon
 
 function test:testPrintf()
     local text = self.utils:printf('Quad%s', 'duo')
