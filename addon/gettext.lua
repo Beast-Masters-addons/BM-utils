@@ -8,6 +8,7 @@ end
 
 ---@class BMGettext A simple gettext implementation for use in WoW addons
 addon.gettext = {}
+---@type BMGettext
 local gettext = addon.gettext
 
 gettext.locales = {}

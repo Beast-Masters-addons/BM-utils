@@ -8,6 +8,7 @@ end
 
 ---@class BMUtilsContainer Container API polyfill for WoW Classic
 addon.container = {}
+---@type BMUtilsContainer
 local container = addon.container
 
 local is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
