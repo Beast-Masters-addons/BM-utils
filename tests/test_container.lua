@@ -28,4 +28,8 @@ function test:testGetContainerItemInfo()
     lu.assertEquals(item['itemID'], 6948)
 end
 
+function test:testPickupContainerItem()
+    lu.assertEquals(container.PickupContainerItem(1, 1), 6948)
+end
+
 os.exit(lu.LuaUnit.run())
