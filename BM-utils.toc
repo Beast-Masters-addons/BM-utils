@@ -10,5 +10,6 @@
 ## SavedVariables: Characters
 ## X-Wago-ID: q96dXq6O
 
+libs\LibStub\LibStub.lua
 lib.xml
 addon\CharacterData.lua

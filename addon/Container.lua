@@ -1,7 +1,14 @@
----@class BMUtilsContainer Container API polyfill for WoW Classic
-_G['BMUtils-container-@version@'] = {}
 ---@type BMUtils
-local container = _G['BMUtils-container-@version@']
+local _, addon = ...
+if not addon then
+    -- luacov: disable
+    return --Check if addon is loaded
+    -- luacov: enable
+end
+
+---@class BMUtilsContainer Container API polyfill for WoW Classic
+addon.container = {}
+local container = addon.container
 
 local is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
 
