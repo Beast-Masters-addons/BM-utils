@@ -34,8 +34,9 @@ function testEmpty()
     lu.assertFalse(basic.empty({ test = 2 }))
     lu.assertFalse(basic.empty('test'))
     lu.assertFalse(basic.empty(true))
-    lu.assertFalse(basic.empty({ first = nil, key = false })
-    )
+    lu.assertFalse(basic.empty({ first = nil, key = false }))
+    lu.assertFalse(basic.empty(1))
+    lu.assertFalse(basic.empty(0))
 end
 
 os.exit(lu.LuaUnit.run())
