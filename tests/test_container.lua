@@ -8,14 +8,12 @@ if is_classic then
 else
     loadfile('build_utils/wow_api/container.lua')()
 end
-
+---@type BMUtils
+local lib = {}
 loadfile('../addon/version.lua')()
-loadfile('../addon/utils.lua')()
-loadfile('../addon/Container.lua')()
+loadfile('../addon/utils.lua')('', lib)
+loadfile('../addon/Container.lua')('', lib)
 
----@type BMGettext
-local lib = _G['BMUtils']
----@type BMUtilsContainer
 local container = lib.container
 
 _G.test = {}

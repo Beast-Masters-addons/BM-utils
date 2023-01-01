@@ -1,7 +1,8 @@
 local lu = require('luaunit')
-loadfile('../addon/gettext.lua')()
+local addon = {}
+loadfile('../addon/gettext.lua')('', addon)
 ---@type BMGettext
-local gettext = _G['BMUtils-gettext-@version@']
+local gettext = addon.gettext
 
 _G.test = {}
 local test = _G.test
