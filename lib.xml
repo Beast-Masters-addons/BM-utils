@@ -6,4 +6,5 @@
     <Script file="addon\gettext.lua"/>
     <Script file="addon\Container.lua"/>
     <Script file="addon\utils.lua"/>
+    <Script file="addon\ContainerCompat.lua"/>
 </Ui>
