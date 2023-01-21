@@ -47,16 +47,6 @@ function test:testDefaultFontColor()
     lu.assertEquals(b, 0.35)
 end
 
-function test:testIsWoWClassic()
-    local is_classic = self.utils:IsWoWClassic()
-    lu.assertEquals(is_classic, os.getenv('GAME_VERSION') ~= 'retail')
-end
-
-function test:testIsWoWClassicNotTBC()
-    local is_classic = self.utils:IsWoWClassic(false)
-    lu.assertEquals(is_classic, os.getenv('GAME_VERSION') == 'classic')
-end
-
 function test:testError()
     local error, r, g, b = self.utils:error('this is bad')
     lu.assertEquals(error, 'this is bad')

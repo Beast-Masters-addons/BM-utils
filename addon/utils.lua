@@ -46,16 +46,6 @@ function lib:cprint(message, r, g, b)
             (b or self.DEFAULT_FONT_COLOR["B"]));
 end
 
-function lib:IsWoWClassic(allow_tbc, allow_wrath)
-    if (allow_wrath == nil or allow_wrath == true) and (allow_tbc == nil or allow_tbc == true) then
-        return select(4, _G.GetBuildInfo()) < 40000
-    elseif allow_tbc == nil or allow_tbc == true then
-        return select(4, _G.GetBuildInfo()) < 30000
-    else
-        return select(4, _G.GetBuildInfo()) < 20000
-    end
-end
-
 --- Add a message to chat frame with red color
 --- @param message string Message text
 function lib:error(message)
