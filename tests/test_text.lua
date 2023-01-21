@@ -27,6 +27,13 @@ function testColorize1()
     lu.assertEquals(text, '|cff007fffQuadduo|r')
 end
 
+function testColorizeInvalidArgument()
+
+    lu.assertErrorMsgContains('Invalid arguments', function()
+        addon.text.colorize('Quadduo', 'bad1', 'bad2')
+    end)
+end
+
 function testDefaultFontColor()
     local _, r, g, b = addon.text.cprint('test')
     lu.assertEquals(r, 1)
