@@ -17,19 +17,19 @@ test.utils = addon
 
 
 function test:testGetCharacterInfo()
-    local character, realm = self.utils:GetCharacterInfo()
+    local character, realm = self.utils.getCharacterInfo()
     lu.assertEquals(character, 'Quadduo')
     lu.assertEquals(realm, 'MirageRaceway')
 
-    character, realm = self.utils:GetCharacterInfo('Quadgnome')
+    character, realm = self.utils.getCharacterInfo('Quadgnome')
     lu.assertEquals(character, 'Quadgnome')
     lu.assertEquals(realm, 'MirageRaceway')
 end
 
 function test:testGetCharacterString()
-    local string = self.utils:GetCharacterString()
+    local string = self.utils.getCharacterString()
     lu.assertEquals(string, 'Quadduo-MirageRaceway')
-    string = self.utils:GetCharacterString('Quadgnome')
+    string = self.utils.getCharacterString('Quadgnome')
     lu.assertEquals(string, 'Quadgnome-MirageRaceway')
 end
 
@@ -59,18 +59,18 @@ function difficultyNumToName()
 end
 
 function test:testSplitCharacterString()
-    local character, realm = self.utils:SplitCharacterString('Quadduo-Mirage Raceway')
+    local character, realm = self.utils.splitCharacterString('Quadduo-Mirage Raceway')
     lu.assertEquals(character, 'Quadduo')
     lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function test:testItemIdFromLink()
-    local id = self.utils:ItemIdFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
+    local id = self.utils.itemIdFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
     lu.assertEquals(id, 2318)
 end
 
 function test:testItemNameFromLink()
-    local id = self.utils:ItemNameFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
+    local id = self.utils.itemNameFromLink('|cffffffff|Hitem:2318::::::::25:::::::|h[Light Leather]|h|r')
     lu.assertEquals(id, 'Light Leather')
 end
 
@@ -90,7 +90,7 @@ function test:testDifficultyColorText()
 end
 
 function test:testCastSpellById()
-    local spell = self.utils:CastSpellById(186257)
+    local spell = self.utils.CastSpellById(186257)
     lu.assertEquals(spell, 'Aspect of the Cheetah')
 end
 

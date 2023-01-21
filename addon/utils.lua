@@ -8,7 +8,7 @@ end
 
 
 --- Get character name and realm, fall back to current player if character not specified
-function lib:GetCharacterInfo(character, realm)
+function lib.getCharacterInfo(character, realm)
     if not character or character == "" then
         character = _G.UnitName("player")
     end
@@ -19,12 +19,12 @@ function lib:GetCharacterInfo(character, realm)
 end
 
 --- Get character name and realm as a string
-function lib:GetCharacterString(character, realm)
-    character, realm = self:GetCharacterInfo(character, realm)
+function lib.getCharacterString(character, realm)
+    character, realm = lib.getCharacterInfo(character, realm)
     return string.format('%s-%s', character, realm)
 end
 
-function lib:SplitCharacterString(name)
+function lib.splitCharacterString(name)
     return string.match(name, "(.+)-(.+)")
 end
 
@@ -46,7 +46,6 @@ end
 
 function lib:GenerateHexColor(r, g, b)
     return ("ff%.2x%.2x%.2x"):format(r, g, b);
-    -- return string.format('%02X%02X%02X', r, g, b)
 end
 
 -- Convert a color table with 0.0-1.0 floats to a RGB hex string
@@ -122,7 +121,7 @@ end
 --- Extract itemId from a link
 --- @param itemLink string Item link
 --- @return number Item ID
-function lib:ItemIdFromLink(itemLink)
+function lib.itemIdFromLink(itemLink)
     if itemLink == nil then
         return nil
     end
@@ -132,13 +131,13 @@ end
 --- Get item name from item link
 --- @param itemLink string Item link
 --- @return string Item name
-function lib:ItemNameFromLink(itemLink)
+function lib.itemNameFromLink(itemLink)
     return string.match(itemLink, "%[(.-)%]")
 end
 
 --- Localization safe method to cast spells
 --- @param spellId number The ID of the spell to cast
-function lib:CastSpellById(spellId)
+function lib.CastSpellById(spellId)
     local spellName = _G.GetSpellInfo(spellId)
     return _G.CastSpellByName(spellName)
 end
