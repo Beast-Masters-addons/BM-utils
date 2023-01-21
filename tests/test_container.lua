@@ -12,10 +12,8 @@ loadfile('../addon/version.lua')()
 loadfile('../addon/utils.lua')()
 loadfile('../addon/Container.lua')()
 
----@type BMGettext
-local lib = _G['BMUtils']
 ---@type BMUtilsContainer
-local container = lib.container
+local container = _G['BMUtils-container-@version@']
 
 _G.test = {}
 local test = _G.test
