@@ -6,9 +6,9 @@ if not addon then
     -- luacov: enable
 end
 
----@class BMUtilBasic Basic utilities from other programming languages missing in lua
+---@class BMUtilsBasic Basic utilities from other programming languages missing in lua
 addon.basic = {}
----@type BMUtilBasic
+---@type BMUtilsBasic
 local basic = addon.basic
 
 ---Parse a float from a string with localized decimal separator

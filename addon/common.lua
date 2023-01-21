@@ -17,10 +17,15 @@ lib.is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
 lib.name = addonName
 
 --All modules are registered here for code completion and type hinting
-
----@type BMUtilsContainer
-lib.container = {}
 ---@type BMUtilsCharacterInfo
 lib.character = {}
+---@type BMUtilsContainer
+lib.container = {}
+---@type BMUtilsBasic
+lib.basic = {}
+---@type BMGettext
+lib.gettext = {}
+---@type BMUtilsTable
+lib.table = {}
 
 _G['LibStub'].libs['BM-utils-' .. v_major] = lib
