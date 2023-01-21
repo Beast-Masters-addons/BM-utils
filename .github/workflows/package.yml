@@ -87,6 +87,8 @@ jobs:
           lua -lluacov test_version.lua
           lua -lluacov test_gettext.lua
           lua -lluacov test_container.lua
+          lua -lluacov test_table.lua
+          lua -lluacov test_character_info.lua
         env:
           GAME_VERSION: ${{ matrix.game_version }}
 
