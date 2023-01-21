@@ -1,9 +1,8 @@
 local lu = require('luaunit')
 
 loadfile('build_utils/wow_api/constants.lua')()
-local is_classic = _G.WOW_PROJECT_ID ~= _G.WOW_PROJECT_MAINLINE
 
-if is_classic then
+if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
     loadfile('build_utils/wow_api/container_classic.lua')()
 else
     loadfile('build_utils/wow_api/container.lua')()
