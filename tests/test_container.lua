@@ -18,6 +18,10 @@ local container = lib.container
 _G.test = {}
 local test = _G.test
 
+function test:testNumFreeSlots()
+    lu.assertEquals(container.GetContainerNumFreeSlots(1), 10)
+end
+
 function test:testNumSlots()
     lu.assertEquals(container.GetContainerNumSlots(1), 30)
 end
