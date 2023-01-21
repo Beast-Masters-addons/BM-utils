@@ -13,6 +13,18 @@ local container = addon.container
 
 local is_classic_era = _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC
 
+---Returns the number of free slots in a bag.
+---@param bagID int The slot containing the bag, e.g. 0 for backpack, etc.
+---@return int numberOfFreeSlots - The number of free slots in the specified bag.
+---@return int bagType - The type of the container, described using bits to indicate its permissible contents
+function container.GetContainerNumFreeSlots(bagID)
+    if is_classic_era then
+        return _G.GetContainerNumFreeSlots(bagID)
+    else
+        return _G.C_Container.GetContainerNumFreeSlots(bagID)
+    end
+end
+
 ---Returns the total number of slots in the bag specified by the index.
 ---@param bagID int The slot containing the bag, e.g. 0 for backpack, etc.
 function container.GetContainerNumSlots(bagID)
