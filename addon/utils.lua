@@ -55,8 +55,9 @@ function lib:ColorToHex(color)
     return self:GenerateHexColor(r, g, b)
 end
 
---/dump LibStub("BM-utils-1.0"):DifficultyToNum("medium")
-function lib:DifficultyToNum(difficulty)
+---@param name string Difficulty name (medium, trivial, yellow, green, ...)
+---@return int Difficulty number (3, 2, ...)
+function lib.difficultyNumToName(name)
     local difficulties = {
         ["optimal"]	= 4,
         ["orange"]	= 4,
@@ -68,17 +69,36 @@ function lib:DifficultyToNum(difficulty)
         ["gray"]	= 1,
         ["grey"]	= 1,
     }
-    return difficulties[difficulty]
+    assert(difficulties[name], 'Unknown difficulty ' .. name)
+    return difficulties[name]
 end
 
---/dump LibStub("BM-utils-1.0"):DifficultyColor("medium")
-function lib:DifficultyColor(difficulty, return_ColorMixin)
+---Get difficulty name from number (3, 2, ...)
+---@return string Difficulty name (medium, trivial, ...)
+function lib.difficultyNameToNum(number)
+    local difficulties = {
+        [4] = 'optimal',
+        [3] = 'medium',
+        [2] = 'easy',
+        [1] = 'trivial',
+    }
+    assert(difficulties[number], 'Unknown difficulty ' .. number)
+    return difficulties[number]
+end
+
+--/dump LibStub("BM-utils-2"):DifficultyColor("medium")
+function lib.difficultyColor(difficulty, return_ColorMixin)
+    assert(difficulty, 'Difficulty not set')
     local TradeSkillTypeColor = {}
     TradeSkillTypeColor["optimal"]	= { r = 1.00, g = 0.50, b = 0.25, font = "GameFontNormalLeftOrange" };
     TradeSkillTypeColor["medium"]	= { r = 1.00, g = 1.00, b = 0.00, font = "GameFontNormalLeftYellow" };
     TradeSkillTypeColor["easy"]		= { r = 0.25, g = 0.75, b = 0.25, font = "GameFontNormalLeftLightGreen" };
     TradeSkillTypeColor["trivial"]	= { r = 0.50, g = 0.50, b = 0.50, font = "GameFontNormalLeftGrey" };
     TradeSkillTypeColor["header"]	= { r = 1.00, g = 0.82, b = 0,    font = "GameFontNormalLeft" };
+
+    if type(difficulty) == 'number' or TradeSkillTypeColor[difficulty] == nil then
+        difficulty = lib.difficultyNumToName(difficulty)
+    end
 
     if return_ColorMixin then
         local colors = TradeSkillTypeColor[difficulty]
@@ -88,8 +108,8 @@ function lib:DifficultyColor(difficulty, return_ColorMixin)
     end
 end
 
-function lib:DifficultyColorText(text, difficulty)
-    local color = self:DifficultyColor(difficulty, true)
+function lib.difficultyColorText(text, difficulty)
+    local color = lib.difficultyColor(difficulty, true)
     --text = CreateColor(colors['r'], colors['g'], colors['b'], 255):WrapTextInColorCode(text)
     return color:WrapTextInColorCode(text)
 end

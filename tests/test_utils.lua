@@ -50,9 +50,12 @@ function test:testColor_to_hex()
     lu.assertEquals(hex, 'ff3fbf3f')
 end
 
-function test:testDifficultyToNum()
-    local num = self.utils:DifficultyToNum("medium")
-    lu.assertEquals(num, 3)
+function difficultyNameToNum()
+    lu.assertEquals(3, self.utils.difficultyNameToNum('medium'))
+end
+
+function difficultyNumToName()
+    lu.assertEquals('medium', self.utils.difficultyNumToName(3))
 end
 
 function test:testSplitCharacterString()
@@ -72,9 +75,9 @@ function test:testItemNameFromLink()
 end
 
 function test:testDifficultyColor()
-    local color = self.utils:DifficultyColor("optimal")
+    local color = self.utils.difficultyColor("optimal")
     lu.assertEquals(color, { r = 1.00, g = 0.50, b = 0.25, font = "GameFontNormalLeftOrange" })
-    local mixin = self.utils:DifficultyColor("optimal", true)
+    local mixin = self.utils.difficultyColor("optimal", true)
     local r, g, b = mixin:GetRGB()
     lu.assertEquals(r, 1.00)
     lu.assertEquals(g, 0.50)
@@ -82,7 +85,7 @@ function test:testDifficultyColor()
 end
 
 function test:testDifficultyColorText()
-    local text = self.utils:DifficultyColorText('colored', 'medium')
+    local text = self.utils.difficultyColorText('colored', 'medium')
     lu.assertEquals(text, '|cffffff00colored|r')
 end
 
