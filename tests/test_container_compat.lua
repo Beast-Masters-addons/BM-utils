@@ -1,6 +1,13 @@
 local lu = require('luaunit')
 loadfile('build_utils/wow_api/constants.lua')()
 _G.C_Container = {}
+
+if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+    function GetContainerNumSlots()
+        --Create dummy function to skip loading of compatibility functions
+    end
+end
+
 ---@type BMUtils
 local lib = {}
 loadfile('../addon/ContainerCompat.lua')('', lib)
@@ -24,6 +31,7 @@ function _G.C_Container.GetContainerItemInfo(containerIndex, slotIndex)
 end
 
 if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+    --Compat should not be loaded on classic era
     function testCompatLoaded()
         lu.assertNil(_G.ContainerCompatLoaded)
     end
