@@ -33,12 +33,6 @@ function GetBuildInfo()
     end
 end
 
-DEFAULT_CHAT_FRAME = {}
-function DEFAULT_CHAT_FRAME:AddMessage(str, r, g, b)
-    return str, r, g, b
-end
-
-
 function UnitName(unit)
     if unit=="player" then
         return "Quadduo"

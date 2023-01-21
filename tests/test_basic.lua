@@ -5,7 +5,7 @@ local addon = {}
 loadfile('build_utils/wow_api/functions.lua')()
 loadfile('../addon/basic.lua')('', addon)
 
----@type BMUtilBasic
+---@type BMUtilsBasic
 local basic = addon.basic
 
 function testIsFloat()
@@ -37,6 +37,16 @@ function testEmpty()
     lu.assertFalse(basic.empty({ first = nil, key = false }))
     lu.assertFalse(basic.empty(1))
     lu.assertFalse(basic.empty(0))
+end
+
+function testPrintf()
+    local text = basic.printf('Quad%s', 'duo')
+    lu.assertEquals(text, 'Quadduo')
+end
+
+function testSprintf()
+    local text = basic.sprintf('Quad%s', 'duo')
+    lu.assertEquals(text, 'Quadduo')
 end
 
 os.exit(lu.LuaUnit.run())

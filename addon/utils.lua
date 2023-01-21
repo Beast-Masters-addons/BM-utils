@@ -6,19 +6,6 @@ if not lib then
     -- luacov: enable
 end
 
-function lib:printf(str, ...)
-    return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
-end
-
-function lib:sprintf(str, ...)
-    return string.format(str, ...)
-end
-
---- Check if a value if empty
-function lib:empty(value)
-    return self.basic.empty(value)
-end
-
 --/run print(LibStub('BM-utils-1.0'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-1.0'):colorize('green', 'FF00FF00'))
 --- Add the specified color to a string

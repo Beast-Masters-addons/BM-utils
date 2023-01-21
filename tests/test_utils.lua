@@ -5,6 +5,7 @@
 ---
 local lu = require('luaunit')
 
+loadfile('build_utils/wow_api/functions.lua')()
 loadfile('wow_functions.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 ---@type BMUtils
@@ -13,28 +14,6 @@ local addon =_G['AddonTable']
 _G['test'] = {}
 local test = _G['test']
 test.utils = addon
-
-function test:testPrintf()
-    local text = self.utils:printf('Quad%s', 'duo')
-    lu.assertEquals(text, 'Quadduo')
-end
-
-function test:testSprintf()
-    local text = self.utils:sprintf('Quad%s', 'duo')
-    lu.assertEquals(text, 'Quadduo')
-end
-
-function test:testEmpty()
-    lu.assertTrue(self.utils:empty(''))
-    lu.assertTrue(self.utils:empty(nil))
-    lu.assertTrue(self.utils:empty({}))
-    lu.assertTrue(self.utils:empty(false))
-    lu.assertFalse(self.utils:empty({ test = 2 }))
-    lu.assertFalse(self.utils:empty('test'))
-    lu.assertFalse(self.utils:empty(true))
-    lu.assertFalse(self.utils:empty({ first = nil, key = false })
-    )
-end
 
 function test:testColorize()
     local text = self.utils:colorize('Quadduo', 'ff3fbf3f')

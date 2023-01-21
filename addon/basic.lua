@@ -43,3 +43,11 @@ function basic.empty(value)
     end
     return false
 end
+
+function basic.printf(str, ...)
+    return _G.DEFAULT_CHAT_FRAME:AddMessage(string.format(str, ...))
+end
+
+function basic.sprintf(str, ...)
+    return string.format(str, ...)
+end
