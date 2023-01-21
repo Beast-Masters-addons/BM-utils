@@ -20,5 +20,7 @@ lib.name = addonName
 
 ---@type BMUtilsContainer
 lib.container = {}
+---@type BMUtilsCharacterInfo
+lib.character = {}
 
 _G['LibStub'].libs['BM-utils-' .. v_major] = lib
