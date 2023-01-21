@@ -3,6 +3,8 @@
 debugstack = debug.traceback
 strmatch = string.match
 addon = {}
+
+_G.C_Container = {}
 C_Timer = {}
 function C_Timer:NewTicker(...) end
 
