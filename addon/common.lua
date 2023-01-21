@@ -27,5 +27,7 @@ lib.basic = {}
 lib.gettext = {}
 ---@type BMUtilsTable
 lib.table = {}
+---@type BMUtilsText
+lib.text =  {}
 
 _G['LibStub'].libs['BM-utils-' .. v_major] = lib

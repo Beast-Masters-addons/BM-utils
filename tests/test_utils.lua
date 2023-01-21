@@ -15,45 +15,6 @@ _G['test'] = {}
 local test = _G['test']
 test.utils = addon
 
-function test:testColorize()
-    local text = self.utils:colorize('Quadduo', 'ff3fbf3f')
-    lu.assertEquals(text, '|cff3fbf3fQuadduo|r')
-end
-
-function test:testColorizeInt()
-    local text = self.utils:colorize('Quadduo', 0x3f, 0xbf, 0x3f)
-    lu.assertEquals(text, '|cff3fbf3fQuadduo|r')
-end
-
-function test:testColorizeInt10()
-    local text = self.utils:colorize('Quadduo', 255, 0, 0)
-    lu.assertEquals(text, '|cffff0000Quadduo|r')
-end
-
-function test:testColorize1()
-    local text = self.utils:colorize('Quadduo', self.utils:ColorToRGB(0, 0.5, 1))
-    lu.assertEquals(text, '|cff007fffQuadduo|r')
-end
-
-function test:testDefaultFontColor()
-    local _, r, g, b = self.utils:cprint('test')
-    lu.assertEquals(r, 1)
-    lu.assertEquals(g, 1)
-    lu.assertEquals(b, 1)
-    self.utils:SetDefaultFontColor(0, 0.25, 0.35)
-    _, r, g, b = self.utils:cprint('test')
-    lu.assertEquals(r, 0)
-    lu.assertEquals(g, 0.25)
-    lu.assertEquals(b, 0.35)
-end
-
-function test:testError()
-    local error, r, g, b = self.utils:error('this is bad')
-    lu.assertEquals(error, 'this is bad')
-    lu.assertEquals(r, 1)
-    lu.assertEquals(g, 0)
-    lu.assertEquals(b, 0)
-end
 
 function test:testGetCharacterInfo()
     local character, realm = self.utils:GetCharacterInfo()
