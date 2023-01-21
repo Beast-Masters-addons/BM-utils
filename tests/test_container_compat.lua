@@ -1,5 +1,5 @@
 local lu = require('luaunit')
-
+loadfile('build_utils/wow_api/constants.lua')()
 _G.C_Container = {}
 ---@type BMUtils
 local lib = {}
