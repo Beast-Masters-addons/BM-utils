@@ -9,8 +9,13 @@ local lib = {}
 loadfile('../addon/CharacterInfo.lua')('', lib)
 
 function testCharacterIcon()
-    local atlas, coordinates = lib.character.icon('human', 'female')
+    local _, coordinates = lib.character.icon('human', 'female')
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
+end
+
+function testCharacterIconCurrentPlayer()
+    local _, coordinates = lib.character.icon()
+    lu.assertEquals({ 0.75, 1.0, 0.5, 0.75 }, coordinates)
 end
 
 function testGender()

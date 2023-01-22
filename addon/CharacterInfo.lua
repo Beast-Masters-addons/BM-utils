@@ -12,11 +12,17 @@ addon.character = {}
 local character = addon.character
 
 ---Get character race icon
+---@param raceFile string Localization-independent race name
+---@param genderString string Gender string (male or female)
 function character.icon(raceFile, genderString)
 
     --https://wow.gamepedia.com/API_UnitRace
     if raceFile == nil then
         _, raceFile = _G.UnitRace('player')
+    end
+
+    if genderString == nil then
+        genderString = character.genderString(_G.UnitSex('player'))
     end
 
     --https://wow.gamepedia.com/API_UnitClass
