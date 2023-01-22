@@ -1,7 +1,4 @@
 local lu = require('luaunit')
----@type BMUtils
-local addon = {}
-
 loadfile('build_utils/wow_api/functions.lua')()
 
 ---@type BMUtils
@@ -42,7 +39,7 @@ function testRaceIcon()
 end
 
 function testRaceIconInt()
-    local _, coordinates = lib.character.raceIcon('human', 1)
+    local _, coordinates = lib.character.raceIcon('human', 3)
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
 end
 
