@@ -8,23 +8,23 @@ loadfile('../addon/CharacterInfo.lua')('', lib)
 function testGetCharacterInfoDefault()
     local character, realm = lib.character.getCharacterInfo()
     lu.assertEquals(character, 'Quadduo')
-    lu.assertEquals(realm, 'MirageRaceway')
+    lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function testGetCharacterInfo()
     local character, realm = lib.character.getCharacterInfo('Quadgnome')
     lu.assertEquals(character, 'Quadgnome')
-    lu.assertEquals(realm, 'MirageRaceway')
+    lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function testGetCharacterStringDefault()
     local string = lib.character.getCharacterString()
-    lu.assertEquals(string, 'Quadduo-MirageRaceway')
+    lu.assertEquals(string, 'Quadduo-Mirage Raceway')
 end
 
 function testGetCharacterString()
     local string = lib.character.getCharacterString('Quadgnome')
-    lu.assertEquals(string, 'Quadgnome-MirageRaceway')
+    lu.assertEquals(string, 'Quadgnome-Mirage Raceway')
 end
 
 function testSplitCharacterString()
