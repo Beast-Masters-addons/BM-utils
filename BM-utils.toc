@@ -7,7 +7,6 @@
 ## Title: Lib: Beast Masters utilities
 ## Notes: Utilities used in my addons
 ## X-GitHubURL: https://github.com/Beast-Masters-addons/BM-utils
-## SavedVariables: Characters
 ## X-Wago-ID: q96dXq6O
 
 libs\LibStub\LibStub.lua
