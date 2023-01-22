@@ -86,6 +86,7 @@ jobs:
           lua -lluacov test_utils.lua
           lua -lluacov test_version.lua
           lua -lluacov test_gettext.lua
+          lua -lluacov test_load_toc.lua
           lua -lluacov test_container.lua
           lua -lluacov test_container_compat.lua
           lua -lluacov test_table.lua
