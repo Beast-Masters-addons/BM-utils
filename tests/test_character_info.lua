@@ -46,8 +46,8 @@ function testRaceIconInt()
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
 end
 
-function testCharacterIconCurrentPlayer()
-    local _, coordinates = lib.character.icon()
+function testRaceIconCurrentPlayer()
+    local _, coordinates = lib.character.raceIcon()
     lu.assertEquals({ 0.75, 1.0, 0.5, 0.75 }, coordinates)
 end
 
