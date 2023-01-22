@@ -15,24 +15,6 @@ _G['test'] = {}
 local test = _G['test']
 test.utils = addon
 
-
-function test:testGetCharacterInfo()
-    local character, realm = self.utils.getCharacterInfo()
-    lu.assertEquals(character, 'Quadduo')
-    lu.assertEquals(realm, 'MirageRaceway')
-
-    character, realm = self.utils.getCharacterInfo('Quadgnome')
-    lu.assertEquals(character, 'Quadgnome')
-    lu.assertEquals(realm, 'MirageRaceway')
-end
-
-function test:testGetCharacterString()
-    local string = self.utils.getCharacterString()
-    lu.assertEquals(string, 'Quadduo-MirageRaceway')
-    string = self.utils.getCharacterString('Quadgnome')
-    lu.assertEquals(string, 'Quadgnome-MirageRaceway')
-end
-
 function test:testColor_to_rgb()
     local r, g, b = self.utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(r, 63.75)
@@ -56,12 +38,6 @@ end
 
 function test:testDifficultyNumToName()
     lu.assertEquals('medium', self.utils.difficultyNumToName(3))
-end
-
-function test:testSplitCharacterString()
-    local character, realm = self.utils.splitCharacterString('Quadduo-Mirage Raceway')
-    lu.assertEquals(character, 'Quadduo')
-    lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function test:testItemIdFromLink()

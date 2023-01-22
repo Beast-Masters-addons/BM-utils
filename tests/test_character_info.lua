@@ -8,6 +8,34 @@ loadfile('build_utils/wow_api/functions.lua')()
 local lib = {}
 loadfile('../addon/CharacterInfo.lua')('', lib)
 
+function testGetCharacterInfoDefault()
+    local character, realm = lib.character.getCharacterInfo()
+    lu.assertEquals(character, 'Quadduo')
+    lu.assertEquals(realm, 'MirageRaceway')
+end
+
+function testGetCharacterInfo()
+    local character, realm = lib.character.getCharacterInfo('Quadgnome')
+    lu.assertEquals(character, 'Quadgnome')
+    lu.assertEquals(realm, 'MirageRaceway')
+end
+
+function testGetCharacterStringDefault()
+    local string = lib.character.getCharacterString()
+    lu.assertEquals(string, 'Quadduo-MirageRaceway')
+end
+
+function testGetCharacterString()
+    local string = lib.character.getCharacterString('Quadgnome')
+    lu.assertEquals(string, 'Quadgnome-MirageRaceway')
+end
+
+function testSplitCharacterString()
+    local character, realm = lib.character.splitCharacterString('Quadduo-Mirage Raceway')
+    lu.assertEquals(character, 'Quadduo')
+    lu.assertEquals(realm, 'Mirage Raceway')
+end
+
 function testCharacterIcon()
     local _, coordinates = lib.character.icon('human', 'female')
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)

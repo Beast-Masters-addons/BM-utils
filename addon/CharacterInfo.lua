@@ -11,6 +11,36 @@ addon.character = {}
 ---@type BMUtilsCharacterInfo
 local character = addon.character
 
+
+--- Get character name and realm, fall back to current player if character not specified
+---@param characterName string Character name (use current character name if not specified)
+---@param realm string Realm name (use current realm if not specified)
+function character.getCharacterInfo(characterName, realm)
+    if not characterName or characterName == "" then
+        characterName = _G.UnitName("player")
+    end
+    if not realm then
+        realm = _G.GetRealmName()
+    end
+    return characterName, realm
+end
+
+--- Format character name and realm as a string
+---@param characterName string Character name (use current character name if not specified)
+---@param realm string Realm name (use current realm if not specified)
+---@return string Character and realm string (Quadduo-Mirage Raceway)
+function character.getCharacterString(characterName, realm)
+    characterName, realm = character.getCharacterInfo(characterName, realm)
+    return ('%s-%s'):format(characterName, realm)
+end
+
+---Split a string with realm and character name
+---@param name string Character and realm string (Quadduo-Mirage Raceway)
+---@return string characterName, realm
+function character.splitCharacterString(name)
+    return string.match(name, "(.+)-(.+)")
+end
+
 ---Get character race icon
 ---@param raceFile string Localization-independent race name
 ---@param genderString string Gender string (male or female)
