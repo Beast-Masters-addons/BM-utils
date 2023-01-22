@@ -36,8 +36,13 @@ function testSplitCharacterString()
     lu.assertEquals(realm, 'Mirage Raceway')
 end
 
-function testCharacterIcon()
-    local _, coordinates = lib.character.icon('human', 'female')
+function testRaceIcon()
+    local _, coordinates = lib.character.raceIcon('human', 'female')
+    lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
+end
+
+function testRaceIconInt()
+    local _, coordinates = lib.character.raceIcon('human', 1)
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
 end
 

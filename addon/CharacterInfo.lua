@@ -11,7 +11,6 @@ addon.character = {}
 ---@type BMUtilsCharacterInfo
 local character = addon.character
 
-
 --- Get character name and realm, fall back to current player if character not specified
 ---@param characterName string Character name (use current character name if not specified)
 ---@param realm string Realm name (use current realm if not specified)
@@ -43,16 +42,18 @@ end
 
 ---Get character race icon
 ---@param raceFile string Localization-independent race name
----@param genderString string Gender string (male or female)
-function character.icon(raceFile, genderString)
+---@param gender string|int Gender string or id (male, female, 2, 1)
+function character.raceIcon(raceFile, gender)
 
     --https://wow.gamepedia.com/API_UnitRace
     if raceFile == nil then
         _, raceFile = _G.UnitRace('player')
     end
 
-    if genderString == nil then
-        genderString = character.genderString(_G.UnitSex('player'))
+    if gender == nil then
+        gender = character.genderString(_G.UnitSex('player'))
+    elseif type(gender) == 'number' then
+        gender = character.genderString(gender)
     end
 
     --https://wow.gamepedia.com/API_UnitClass
@@ -77,7 +78,7 @@ function character.icon(raceFile, genderString)
         TROLL_FEMALE = { 0.5, 0.75, 0.75, 1.0 },
         ORC_FEMALE = { 0.75, 1.0, 0.75, 1.0 },
     }
-    local key = raceFile:upper() .. '_' .. genderString:upper()
+    local key = raceFile:upper() .. '_' .. gender:upper()
     assert(race_coordinates[key], 'Invalid race/gender combination')
     return atlas, race_coordinates[key]
 end
