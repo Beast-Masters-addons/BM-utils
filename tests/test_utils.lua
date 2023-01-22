@@ -50,11 +50,11 @@ function test:testColor_to_hex()
     lu.assertEquals(hex, 'ff3fbf3f')
 end
 
-function difficultyNameToNum()
+function test:testDifficultyNameToNum()
     lu.assertEquals(3, self.utils.difficultyNameToNum('medium'))
 end
 
-function difficultyNumToName()
+function test:testDifficultyNumToName()
     lu.assertEquals('medium', self.utils.difficultyNumToName(3))
 end
 

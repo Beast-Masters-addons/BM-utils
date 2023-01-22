@@ -56,7 +56,7 @@ end
 
 ---@param name string Difficulty name (medium, trivial, yellow, green, ...)
 ---@return int Difficulty number (3, 2, ...)
-function lib.difficultyNumToName(name)
+function lib.difficultyNameToNum(name)
     local difficulties = {
         ["optimal"]	= 4,
         ["orange"]	= 4,
@@ -74,7 +74,7 @@ end
 
 ---Get difficulty name from number (3, 2, ...)
 ---@return string Difficulty name (medium, trivial, ...)
-function lib.difficultyNameToNum(number)
+function lib.difficultyNumToName(number)
     local difficulties = {
         [4] = 'optimal',
         [3] = 'medium',
