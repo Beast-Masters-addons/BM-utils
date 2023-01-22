@@ -6,28 +6,6 @@ if not lib then
     -- luacov: enable
 end
 
-
---- Get character name and realm, fall back to current player if character not specified
-function lib.getCharacterInfo(character, realm)
-    if not character or character == "" then
-        character = _G.UnitName("player")
-    end
-    if not realm then
-        realm = _G.GetRealmName()
-    end
-    return character, realm
-end
-
---- Get character name and realm as a string
-function lib.getCharacterString(character, realm)
-    character, realm = lib.getCharacterInfo(character, realm)
-    return string.format('%s-%s', character, realm)
-end
-
-function lib.splitCharacterString(name)
-    return string.match(name, "(.+)-(.+)")
-end
-
 --- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
 --- @param r number|table Red or table with r, g and b as keys
 --- @param g number Green
