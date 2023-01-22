@@ -9,6 +9,8 @@
 ## X-GitHubURL: https://github.com/Beast-Masters-addons/BM-utils
 ## X-Wago-ID: q96dXq6O
 
+#@no-lib-strip
 libs\LibStub\LibStub.lua
+#@end-no-lib-strip#
+
 lib.xml
-addon\CharacterData.lua
