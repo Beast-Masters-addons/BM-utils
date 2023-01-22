@@ -84,6 +84,11 @@ function test:testDifficultyColor()
     lu.assertEquals(b, 0.25)
 end
 
+function test:testDifficultyColorNum()
+    local color = self.utils.difficultyColor(2)
+    lu.assertEquals(color, { r = 0.25, g = 0.75, b = 0.25, font = "GameFontNormalLeftLightGreen" })
+end
+
 function test:testDifficultyColorText()
     local text = self.utils.difficultyColorText('colored', 'medium')
     lu.assertEquals(text, '|cffffff00colored|r')
