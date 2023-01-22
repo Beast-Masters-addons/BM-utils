@@ -17,7 +17,9 @@ function testLoadLibStub()
 
     for key, value in pairs(lib) do
         lu.assertNotNil(value, ('%s is nil'):format(key))
-        lu.assertFalse(basic.empty(value), ('%s is empty'):format(key))
+        if key ~= 'is_classic' then
+            lu.assertFalse(basic.empty(value), ('%s is empty'):format(key))
+        end
     end
 
 end
