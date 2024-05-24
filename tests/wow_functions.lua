@@ -18,7 +18,7 @@ function Round(value)
     return math.ceil(value)
 end
 
-if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+if os.getenv('GAME_VERSION') == 'classic' then
     loadfile('wow-ui-source/Interface/SharedXML/Color.lua')()
     loadfile('wow-ui-source/Interface/SharedXML/Mixin.lua')()
 else
