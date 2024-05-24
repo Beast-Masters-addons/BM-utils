@@ -18,8 +18,13 @@ function Round(value)
     return math.ceil(value)
 end
 
-loadfile('wow-ui-source/Interface/SharedXML/Color.lua')()
-loadfile('wow-ui-source/Interface/SharedXML/Mixin.lua')()
+if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+    loadfile('wow-ui-source/Interface/SharedXML/Color.lua')()
+    loadfile('wow-ui-source/Interface/SharedXML/Mixin.lua')()
+else
+    loadfile('wow-ui-source/Interface/AddOns/Blizzard_SharedXML/Color.lua')()
+    loadfile('wow-ui-source/Interface/AddOns/Blizzard_SharedXML/Mixin.lua')()
+end
 
 function GetItemQualityColor(quality)
     local colors = loadfile('wow-data/ColorData.lua')()
