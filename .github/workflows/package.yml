@@ -23,15 +23,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'wrath', 'retail' ]
+        game_version: [ 'classic', 'cata', 'retail' ]
 
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Get build utils
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Beast-Masters-addons/build_utils
           path: tests/build_utils
@@ -48,7 +48,7 @@ jobs:
         run: luacheck addon --no-self
 
       - name: Build the addon
-        uses: BigWigsMods/packager@v2.1.0
+        uses: BigWigsMods/packager@v2.3.1
         with:
           args: -g ${{ matrix.game_version }} -z -d
 
@@ -57,15 +57,15 @@ jobs:
 
       - name: Download classic UI source
         if: matrix.game_version == 'classic'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
           ref: 'classic_era'
 
       - name: Download Wrath Classic UI source
-        if: matrix.game_version == 'wrath'
-        uses: actions/checkout@v3
+        if: matrix.game_version == 'cata'
+        uses: actions/checkout@v4
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -73,7 +73,7 @@ jobs:
 
       - name: Download retail UI source
         if: matrix.game_version == 'retail'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -96,7 +96,7 @@ jobs:
           GAME_VERSION: ${{ matrix.game_version }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
 
   build:
     runs-on: ubuntu-latest
@@ -113,12 +113,12 @@ jobs:
       WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.1.0
+        uses: BigWigsMods/packager@v2.3.1
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: BM-utils
           path: .release
