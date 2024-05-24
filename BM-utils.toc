@@ -1,7 +1,6 @@
 ## Interface: 100002
 ## Interface-Classic: 11403
-## Interface-BCC: 20501
-## Interface-Wrath: 30401
+## Interface-Cata: 40400
 ## Version: @project-version@
 ## Author: datagutten
 ## Title: Lib: Beast Masters utilities
