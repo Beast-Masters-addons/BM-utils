@@ -22,7 +22,7 @@ function lib.colorize(str, r, g, b)
     local rgb
     assert(str, 'Empty string')
     if type(r) == type(g) and type(g) == type(b) and type(r) == 'number' then
-        rgb = utils:GenerateHexColor(r, g, b)
+        rgb = utils.GenerateHexColor(r, g, b)
     elseif type(r) == 'string' and g == nil and b == nil then
         rgb = r
     else

@@ -25,7 +25,7 @@ function testColorizeInt10()
 end
 
 function testColorize1()
-    local text = lib.colorize('Quadduo', utils:ColorToRGB(0, 0.5, 1))
+    local text = lib.colorize('Quadduo', utils.ColorToRGB(0, 0.5, 1))
     lu.assertEquals(text, '|cff007fffQuadduo|r')
 end
 
