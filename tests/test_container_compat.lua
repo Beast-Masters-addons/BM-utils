@@ -10,7 +10,7 @@ end
 
 ---@type BMUtils
 local lib = {}
-loadfile('../addon/ContainerCompat.lua')('', lib)
+loadfile('../compat/ContainerCompat.lua')('', lib)
 
 function _G.C_Container.GetContainerItemInfo(containerIndex, slotIndex)
     if containerIndex == 1 and slotIndex == 1 then
