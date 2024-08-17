@@ -82,16 +82,16 @@ jobs:
       - name: Run tests
         working-directory: ./tests
         run: |
+          lua -lluacov test_load.lua
           lua -lluacov test_basic.lua
-          lua -lluacov test_utils.lua
-          lua -lluacov test_version.lua
-          lua -lluacov test_gettext.lua
-          lua -lluacov test_load_toc.lua
+          lua -lluacov test_character_info.lua
           lua -lluacov test_container.lua
           lua -lluacov test_container_compat.lua
+          lua -lluacov test_gettext.lua
           lua -lluacov test_table.lua
           lua -lluacov test_text.lua
-          lua -lluacov test_character_info.lua
+          lua -lluacov test_utils.lua
+          lua -lluacov test_version.lua
         env:
           GAME_VERSION: ${{ matrix.game_version }}
 
