@@ -13,7 +13,7 @@ local lib = _G['BM-utils-@project-version@']:NewModule("BMUtils")
 --- @param g number Green
 --- @param b number Blue
 ---@return number, number, number
-function lib:ColorToRGB(r, g, b)
+function lib.ColorToRGB(r, g, b)
     local color
     if type(r) == 'table' then
         color = r
@@ -24,18 +24,18 @@ function lib:ColorToRGB(r, g, b)
     return 255 * color['r'], 255 * color['g'], 255 * color['b']
 end
 
-function lib:GenerateHexColor(r, g, b)
+function lib.GenerateHexColor(r, g, b)
     return ("ff%.2x%.2x%.2x"):format(r, g, b);
 end
 
 -- Convert a color table with 0.0-1.0 floats to a RGB hex string
-function lib:ColorToHex(color)
-    local r, g, b = self:ColorToRGB(color)
-    return self:GenerateHexColor(r, g, b)
+function lib.ColorToHex(color)
+    local r, g, b = lib.ColorToRGB(color)
+    return lib.GenerateHexColor(r, g, b)
 end
 
 ---@param name string Difficulty name (medium, trivial, yellow, green, ...)
----@return int Difficulty number (3, 2, ...)
+---@return number Difficulty number (3, 2, ...)
 function lib.difficultyNameToNum(name)
     local difficulties = {
         ["optimal"]	= 4,
