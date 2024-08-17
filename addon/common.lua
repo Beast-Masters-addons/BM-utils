@@ -1,6 +1,5 @@
 local version = '@project-version@'
 local v_major, v_minor = _G['BMUtils-Version'].parse_version(version)
----@class BMUtils
 
 if not _G.LibStub:NewLibrary("BM-utils-" .. v_major, v_minor) then
     -- luacov: disable

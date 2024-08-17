@@ -1,4 +1,3 @@
----@type BMUtils
 if not _G['BM-utils-@project-version@'] then
     -- luacov: disable
     return --Check if addon is loaded

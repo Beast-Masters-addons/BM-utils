@@ -16,7 +16,6 @@ loadfile('../addon/common.lua')('test')
 loadfile('../addon/basic.lua')('test')
 
 function testLoadInternal()
-    ---@type BMUtils
     local lib = _G['BM-utils-@project-version@']
     local basic = lib:GetModule('BMUtilsBasic')
     lu.assertEquals(lib.version, '@project-version@')
