@@ -13,19 +13,19 @@ _G['test'] = {}
 local test = _G['test']
 
 function test:testColor_to_rgb()
-    local r, g, b = utils:ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
+    local r, g, b = utils.ColorToRGB({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(r, 63.75)
     lu.assertEquals(g, 191.25)
     lu.assertEquals(b, 63.75)
 end
 
 function test:testGenerateHexColor()
-    local hex = utils:GenerateHexColor(63.75, 191.25, 63.75)
+    local hex = utils.GenerateHexColor(63.75, 191.25, 63.75)
     lu.assertEquals(hex, 'ff3fbf3f')
 end
 
 function test:testColor_to_hex()
-    local hex = utils:ColorToHex({ r = 0.25, g = 0.75, b = 0.25 })
+    local hex = utils.ColorToHex({ r = 0.25, g = 0.75, b = 0.25 })
     lu.assertEquals(hex, 'ff3fbf3f')
 end
 
