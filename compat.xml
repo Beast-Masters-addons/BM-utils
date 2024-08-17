@@ -1,4 +1,6 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.blizzard.com/wow/ui/" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
     <Script file="addon\compat\ContainerCompat.lua"/>
+    <Script file="addon\compat\AddonCompat.lua"/>
+    <Script file="addon\compat\EasyMenu.lua"/>
 </Ui>
