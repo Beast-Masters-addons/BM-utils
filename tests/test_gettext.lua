@@ -1,8 +1,11 @@
 local lu = require('luaunit')
-local addon = {}
-loadfile('../addon/gettext.lua')('', addon)
+
+loadfile('build_utils/wow_api/functions.lua')()
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
+
 ---@type BMGettext
-local gettext = addon.gettext
+local gettext = _G['BM-utils-@project-version@']:GetModule("BMGettext")
 
 _G.test = {}
 local test = _G.test

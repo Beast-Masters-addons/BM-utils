@@ -1,15 +1,12 @@
 ---@type BMUtils
-local _, addon = ...
-if not addon then
+if not _G['BM-utils-@project-version@'] then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
 
 ---@class BMUtilsBasic Basic utilities from other programming languages missing in lua
-addon.basic = {}
----@type BMUtilsBasic
-local basic = addon.basic
+local basic = _G['BM-utils-@project-version@']:NewModule("BMUtilsBasic")
 
 ---Parse a float from a string with localized decimal separator
 function basic.parseFloat(float)

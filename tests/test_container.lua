@@ -1,19 +1,13 @@
 local lu = require('luaunit')
 
 loadfile('build_utils/wow_api/constants.lua')()
+loadfile('build_utils/wow_api/functions.lua')()
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/wow_api/container.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
-if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
-    loadfile('build_utils/wow_api/container_classic.lua')()
-else
-    loadfile('build_utils/wow_api/container.lua')()
-end
----@type BMUtils
-local lib = {}
-loadfile('../addon/version.lua')()
-loadfile('../addon/utils.lua')('', lib)
-loadfile('../addon/Container.lua')('', lib)
-
-local container = lib.container
+---@type BMUtilsContainer
+local container = _G['BM-utils-@project-version@']:GetModule("BMUtilsContainer")
 
 _G.test = {}
 local test = _G.test

@@ -1,6 +1,7 @@
 ## Interface: 100002
 ## Interface-Classic: 11403
 ## Interface-Cata: 40400
+## Interface-Wrath: 30300
 ## Version: @project-version@
 ## Author: datagutten
 ## Title: Lib: Beast Masters utilities
@@ -10,6 +11,7 @@
 
 #@no-lib-strip
 libs\LibStub\LibStub.lua
+libs\AceAddon-3.0\AceAddon-3.0.xml
 #@end-no-lib-strip#
 
 lib.xml

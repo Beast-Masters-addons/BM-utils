@@ -1,15 +1,14 @@
 ---@type BMUtils
-local _, addon = ...
-if not addon then
+if not _G['BM-utils-@project-version@'] then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
 
 ---@class BMUtilsText string utilities
-addon.text = {}
----@type BMUtilsText
-local lib = addon.text
+local lib = _G['BM-utils-@project-version@']:NewModule("BMUtilsText")
+---@type BMUtils
+local utils = _G['BM-utils-@project-version@']:GetModule("BMUtils")
 
 --/run print(LibStub('BM-utils-2'):colorize('red', 'ffff0000'))
 --/run print(LibStub('BM-utils-2'):colorize('green', 'FF00FF00'))
@@ -23,7 +22,7 @@ function lib.colorize(str, r, g, b)
     local rgb
     assert(str, 'Empty string')
     if type(r) == type(g) and type(g) == type(b) and type(r) == 'number' then
-        rgb = addon:GenerateHexColor(r, g, b)
+        rgb = utils:GenerateHexColor(r, g, b)
     elseif type(r) == 'string' and g == nil and b == nil then
         rgb = r
     else

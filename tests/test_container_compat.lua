@@ -1,34 +1,10 @@
 local lu = require('luaunit')
+
+loadfile('build_utils/wow_api/functions.lua')()
 loadfile('build_utils/wow_api/constants.lua')()
-_G.C_Container = {}
+loadfile('build_utils/wow_api/container.lua')()
 
-if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
-    function GetContainerNumSlots()
-        --Create dummy function to skip loading of compatibility functions
-    end
-end
-
----@type BMUtils
-local lib = {}
-loadfile('../compat/ContainerCompat.lua')('', lib)
-
-function _G.C_Container.GetContainerItemInfo(containerIndex, slotIndex)
-    if containerIndex == 1 and slotIndex == 1 then
-        return {
-            hasLoot = false,
-            hyperlink = "|cffffffff|Hitem:6948::::::::49:253:::::|h[Hearthstone]|h|r",
-            iconFileID = 134414,
-            hasNoValue = true,
-            isLocked = false,
-            itemID = 6948,
-            isBound = true,
-            stackCount = 1,
-            isFiltered = false,
-            isReadable = false,
-            quality = 1,
-        }
-    end
-end
+loadfile('../compat/ContainerCompat.lua')()
 
 if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
     --Compat should not be loaded on classic era

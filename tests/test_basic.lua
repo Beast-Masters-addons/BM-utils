@@ -1,12 +1,11 @@
 local lu = require('luaunit')
----@type BMUtils
-local addon = {}
 
 loadfile('build_utils/wow_api/functions.lua')()
-loadfile('../addon/basic.lua')('', addon)
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
 ---@type BMUtilsBasic
-local basic = addon.basic
+local basic = _G['BM-utils-@project-version@']:GetModule("BMUtilsBasic")
 
 function testIsFloat()
     lu.assertTrue(basic.isFloat(2.1))

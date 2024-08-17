@@ -1,18 +1,14 @@
 local lu = require('luaunit')
-local addon = {}
 
-loadfile('wow_functions.lua')()
-loadfile('../addon/version.lua')()
-loadfile('../addon/utils.lua')()
-loadfile('../addon/basic.lua')('', addon)
-loadfile('../addon/table.lua')('', addon)
 loadfile('build_utils/wow_api/functions.lua')()
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
+
+---@type BMUtilsTable
+local utils = _G['BM-utils-@project-version@']:GetModule("BMUtilsTable")
 
 _G['test'] = {}
 local tests = _G['test']
-
----@type BMUtilsTable
-local utils = addon.table
 
 function tests:testSubTableCheck()
     local data = {}

@@ -1,10 +1,12 @@
 ---@type BMUtils
-local _, lib = ...
-if not lib then
+if not _G['BM-utils-@project-version@'] then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
+
+---@class BMUtils
+local lib = _G['BM-utils-@project-version@']:NewModule("BMUtils")
 
 --- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
 --- @param r number|table Red or table with r, g and b as keys

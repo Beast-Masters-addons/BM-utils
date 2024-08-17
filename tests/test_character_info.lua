@@ -1,57 +1,59 @@
 local lu = require('luaunit')
-loadfile('build_utils/wow_api/functions.lua')()
 
----@type BMUtils
-local lib = {}
-loadfile('../addon/CharacterInfo.lua')('', lib)
+loadfile('build_utils/wow_api/functions.lua')()
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
+
+---@type BMUtilsCharacterInfo
+local lib = _G['BM-utils-@project-version@']:GetModule("BMUtilsCharacterInfo")
 
 function testGetCharacterInfoDefault()
-    local character, realm = lib.character.getCharacterInfo()
+    local character, realm = lib.getCharacterInfo()
     lu.assertEquals(character, 'Quadduo')
     lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function testGetCharacterInfo()
-    local character, realm = lib.character.getCharacterInfo('Quadgnome')
+    local character, realm = lib.getCharacterInfo('Quadgnome')
     lu.assertEquals(character, 'Quadgnome')
     lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function testGetCharacterStringDefault()
-    local string = lib.character.getCharacterString()
+    local string = lib.getCharacterString()
     lu.assertEquals(string, 'Quadduo-Mirage Raceway')
 end
 
 function testGetCharacterString()
-    local string = lib.character.getCharacterString('Quadgnome')
+    local string = lib.getCharacterString('Quadgnome')
     lu.assertEquals(string, 'Quadgnome-Mirage Raceway')
 end
 
 function testSplitCharacterString()
-    local character, realm = lib.character.splitCharacterString('Quadduo-Mirage Raceway')
+    local character, realm = lib.splitCharacterString('Quadduo-Mirage Raceway')
     lu.assertEquals(character, 'Quadduo')
     lu.assertEquals(realm, 'Mirage Raceway')
 end
 
 function testRaceIcon()
-    local _, coordinates = lib.character.raceIcon('human', 'female')
+    local _, coordinates = lib.raceIcon('human', 'female')
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
 end
 
 function testRaceIconInt()
-    local _, coordinates = lib.character.raceIcon('human', 3)
+    local _, coordinates = lib.raceIcon('human', 3)
     lu.assertEquals({ 0, 0.25, 0.5, 0.75 }, coordinates)
 end
 
 function testRaceIconCurrentPlayer()
-    local _, coordinates = lib.character.raceIcon()
+    local _, coordinates = lib.raceIcon()
     lu.assertEquals({ 0.75, 1.0, 0.5, 0.75 }, coordinates)
 end
 
 function testGender()
-    lu.assertEquals('unknown', lib.character.genderString(1))
-    lu.assertEquals('male', lib.character.genderString(2))
-    lu.assertEquals('female', lib.character.genderString(3))
+    lu.assertEquals('unknown', lib.genderString(1))
+    lu.assertEquals('male', lib.genderString(2))
+    lu.assertEquals('female', lib.genderString(3))
 end
 
 os.exit(lu.LuaUnit.run())
