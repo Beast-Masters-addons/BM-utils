@@ -24,7 +24,7 @@ function testLoadInternal()
 end
 
 function testLoadLibStub()
-    local lib = LibStub('BM-utils-2')
+    local lib = LibStub('BM-utils-0')
     local basic = lib:GetModule('BMUtilsBasic')
     lu.assertEquals(lib.version, '@project-version@')
     lu.assertFalse(basic.isFloat(1))
