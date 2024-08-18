@@ -1,7 +1,7 @@
 local version = '@project-version@'
 local v_major, v_minor = _G['BMUtils-Version'].parse_version(version)
 
-if not _G.LibStub:NewLibrary("BM-utils-" .. v_major, v_minor) then
+if not _G.LibStub:NewLibrary("BM-utils-2" , v_minor) then
     -- luacov: disable
     return    -- already loaded and no upgrade necessary
     -- luacov: enable
