@@ -1,4 +1,5 @@
-if not _G['BM-utils-@project-version@'] then
+local _, addon = ...
+if not addon.bm_utils_loaded then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
@@ -23,6 +24,7 @@ function lib.ColorToRGB(r, g, b)
     return 255 * color['r'], 255 * color['g'], 255 * color['b']
 end
 
+---@deprecated
 function lib.GenerateHexColor(r, g, b)
     return ("ff%.2x%.2x%.2x"):format(r, g, b);
 end

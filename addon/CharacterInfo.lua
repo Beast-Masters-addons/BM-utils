@@ -1,5 +1,5 @@
----@type BMUtils
-if not _G['BM-utils-@project-version@'] then
+local _, addon = ...
+if not addon.bm_utils_loaded then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
@@ -78,6 +78,13 @@ function character.raceIcon(raceFile, gender)
     local key = raceFile:upper() .. '_' .. gender:upper()
     assert(race_coordinates[key], 'Invalid race/gender combination')
     return atlas, race_coordinates[key]
+end
+
+---Get character class color
+---@return ColorMixin Class color as a ColorMixin object
+function character.classColor(class)
+    assert(_G.RAID_CLASS_COLORS[class], 'Invalid class')
+    return _G.RAID_CLASS_COLORS[class]
 end
 
 ---Convert gender id to string

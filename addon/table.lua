@@ -1,4 +1,5 @@
-if not _G['BM-utils-@project-version@'] then
+local _, addon = ...
+if not addon.bm_utils_loaded then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable

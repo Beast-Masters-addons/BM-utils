@@ -1,12 +1,17 @@
+local _, addon = ...
 local version = '@project-version@'
 local v_major, v_minor = _G['BMUtils-Version'].parse_version(version)
 v_major = 2
 
+addon.bm_utils_loaded = false
 if not _G.LibStub:NewLibrary("BM-utils-" .. v_major, v_minor) then
     -- luacov: disable
     return    -- already loaded and no upgrade necessary
     -- luacov: enable
 end
+addon.bm_utils_loaded = true
+addon.v_major = v_major
+addon.v_minor = v_minor
 
 local lib = _G.LibStub("AceAddon-3.0"):NewAddon("BM-utils")
 
