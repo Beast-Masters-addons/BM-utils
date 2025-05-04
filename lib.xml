@@ -8,5 +8,4 @@
     <Script file="addon\table.lua"/>
     <Script file="addon\text.lua"/>
     <Script file="addon\gettext.lua"/>
-    <Script file="addon\Container.lua"/>
 </Ui>
