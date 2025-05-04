@@ -5,6 +5,9 @@ lib.version = '@project-version@'
 
 function lib.parse_version(version)
     assert(version, 'Version is nil')
+    if version == '@project-version@' then
+        return 0, 99
+    end
     local major, minor = version:match('v(%d+).(%d+)')
     if major ~= nil then
         major = tonumber(major)
