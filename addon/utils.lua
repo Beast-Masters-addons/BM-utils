@@ -8,6 +8,10 @@ end
 ---@class BMUtils
 local lib = _G['BM-utils-@project-version@']:NewModule("BMUtils")
 
+---Wow major version
+---@type number
+lib.wow_major = math.floor(tonumber(select(4, _G.GetBuildInfo()) / 10000))
+
 --- Convert a color table with 0.0-1.0 floats to a 0-255 RGB int
 --- @param r number|table Red or table with r, g and b as keys
 --- @param g number Green
@@ -121,4 +125,19 @@ end
 function lib.CastSpellById(spellId)
     local spellName = _G.GetSpellInfo(spellId)
     return _G.CastSpellByName(spellName)
+end
+
+function lib.getGameShortName()
+    local names = {
+        [1] = "classic",
+        [2] = "bcc",
+        [3] = "wrath",
+        [4] = "cata",
+        [5] = "mists",
+    }
+    if lib.wow_major <= 5 then
+        return names[lib.wow_major]
+    else
+        return "retail"
+    end
 end

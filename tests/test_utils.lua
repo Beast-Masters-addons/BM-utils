@@ -76,5 +76,11 @@ function test:gettext()
     lu.assertNotNil(utils.gettext)
 end
 
+function test:testGameShortName()
+    ---Wow major version
+    ---@type number
+    lu.assertEquals(utils.getGameShortName(), os.getenv('GAME_VERSION'))
+end
+
 os.exit(lu.LuaUnit.run())
 
