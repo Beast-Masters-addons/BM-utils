@@ -6,7 +6,7 @@ loadfile('build_utils/wow_api/container.lua')()
 
 loadfile('../compat/ContainerCompat.lua')()
 
-if _G.WOW_PROJECT_ID == _G.WOW_PROJECT_CLASSIC then
+if os.getenv('GAME_VERSION') == 'wrath' then
     --Compat should not be loaded on classic era
     function testCompatLoaded()
         lu.assertNil(_G.ContainerCompatLoaded)

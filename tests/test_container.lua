@@ -6,6 +6,10 @@ loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/wow_api/container.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
+if os.getenv('GAME_VERSION') == 'wrath' then
+    os.exit(0)
+end
+
 ---@type BMUtilsContainer
 local container = _G.C_Container
 

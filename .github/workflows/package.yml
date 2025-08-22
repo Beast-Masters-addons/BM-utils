@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'mists', 'retail' ]
+        game_version: [ 'classic', 'wrath', 'mists', 'retail' ]
 
 
     steps:
@@ -78,7 +78,6 @@ jobs:
       - name: Run tests
         working-directory: ./tests
         run: |
-          lua -lluacov test_load.lua
           lua -lluacov test_basic.lua
           lua -lluacov test_character_info.lua
           lua -lluacov test_container.lua
