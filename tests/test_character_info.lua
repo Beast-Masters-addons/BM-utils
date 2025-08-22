@@ -5,7 +5,7 @@ loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
 ---@type BMUtilsCharacterInfo
-local lib = _G['BM-utils-@project-version@']:GetModule("BMUtilsCharacterInfo")
+local lib = _G.LibStub("BMUtilsCharacterInfo")
 
 function testGetCharacterInfoDefault()
     local character, realm = lib.getCharacterInfo()

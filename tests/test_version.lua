@@ -40,9 +40,21 @@ function test:testSameVersion()
 end
 
 function test:testInvalidVersionString()
-    local major, minor = self.utils.parse_version('@project-version@')
+    local major, minor = self.utils.parse_version('bad')
     lu.assertEquals(major, 0)
     lu.assertEquals(minor, 0)
+end
+
+function test:testDevVersionString()
+    local major, minor = self.utils.parse_version('@project-version@')
+    lu.assertEquals(major, 0)
+    lu.assertEquals(minor, 99)
+end
+
+function test:testGitVersionString()
+    local major, minor = self.utils.parse_version('BM-utils-v1.9-71-g61d5143')
+    lu.assertEquals(major, 1)
+    lu.assertEquals(minor, 9)
 end
 
 os.exit(lu.LuaUnit.run())

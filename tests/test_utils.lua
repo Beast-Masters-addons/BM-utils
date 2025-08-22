@@ -7,7 +7,7 @@ loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
 ---@type BMUtils
-local utils = _G['BM-utils-@project-version@']:GetModule("BMUtils")
+local utils = _G.LibStub("BMUtils")
 
 _G['test'] = {}
 local test = _G['test']

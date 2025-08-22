@@ -1,17 +1,16 @@
-local _, addon = ...
-if not addon.bm_utils_loaded then
+---@class BMUtilsText string utilities
+local lib = _G.LibStub:NewLibrary("BMUtilsText", 0)
+if not lib then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
 
----@class BMUtilsText string utilities
-local lib = _G['BM-utils-@project-version@']:NewModule("BMUtilsText")
 ---@type BMUtils
-local utils = _G['BM-utils-@project-version@']:GetModule("BMUtils")
+local utils = _G.LibStub("BMUtils")
 
---/run print(LibStub('BM-utils-2'):colorize('red', 'ffff0000'))
---/run print(LibStub('BM-utils-2'):colorize('green', 'FF00FF00'))
+--/run print(LibStub('BMUtilsText'):colorize('red', 'ffff0000'))
+--/run print(LibStub('BMUtilsText'):colorize('green', 'FF00FF00'))
 --- Add the specified color to a string
 --- @param str string Text to be colorized
 --- @param r number|string Red or RGB string

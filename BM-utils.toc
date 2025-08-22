@@ -11,7 +11,6 @@
 
 #@no-lib-strip
 libs\LibStub\LibStub.lua
-libs\AceAddon-3.0\AceAddon-3.0.xml
 #@end-no-lib-strip#
 
 lib.xml

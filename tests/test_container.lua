@@ -7,7 +7,7 @@ loadfile('build_utils/wow_api/container.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
 ---@type BMUtilsContainer
-local container = _G['BM-utils-@project-version@']:GetModule("BMUtilsContainer")
+local container = _G.C_Container
 
 _G.test = {}
 local test = _G.test

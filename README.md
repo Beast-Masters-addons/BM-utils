@@ -1,5 +1,5 @@
 # Beast Masters utilities
-Utilities used in my addons
+Utilities used in my addons. All utilities are registered to LibStub as separate libraries with their own version number.
 
 ## Usage:
 Add to .pkgmeta:

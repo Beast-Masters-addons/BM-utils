@@ -5,9 +5,9 @@ loadfile('build_utils/wow_api/frame.lua')()
 loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
 
 ---@type BMUtilsText
-local lib = _G['BM-utils-@project-version@']:GetModule("BMUtilsText")
+local lib = _G.LibStub("BMUtilsText")
 ---@type BMUtils
-local utils = _G['BM-utils-@project-version@']:GetModule("BMUtils")
+local utils = _G.LibStub("BMUtils")
 
 function testColorize()
     local text = lib.colorize('Quadduo', 'ff3fbf3f')

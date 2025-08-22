@@ -29,12 +29,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      - name: Get build utils
-        uses: actions/checkout@v4
         with:
-          repository: Beast-Masters-addons/build_utils
-          path: tests/build_utils
+          submodules: recursive
 
       - name: Install lua dependencies
         run: |
@@ -102,8 +98,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     needs:
       - test

@@ -1,12 +1,10 @@
-local _, addon = ...
-if not addon.bm_utils_loaded then
+---@class BMUtilsCharacterInfo Character info utils
+local character = _G.LibStub:NewLibrary("BMUtilsCharacterInfo", 0)
+if not character then
     -- luacov: disable
-    return --Check if addon is loaded
+    return    -- already loaded and no upgrade necessary
     -- luacov: enable
 end
-
----@class BMUtilsCharacterInfo Character info utils
-local character = _G['BM-utils-@project-version@']:NewModule("BMUtilsCharacterInfo")
 
 --- Get character name and realm, fall back to current player if character not specified
 ---@param characterName string Character name (use current character name if not specified)

@@ -1,12 +1,10 @@
-local _, addon = ...
-if not addon.bm_utils_loaded then
+---@class BMUtilsBasic Basic utilities from other programming languages missing in lua
+local basic = _G.LibStub:NewLibrary("BMUtilsBasic", 0)
+if not basic then
     -- luacov: disable
-    return --Check if addon is loaded
+    return    -- already loaded and no upgrade necessary
     -- luacov: enable
 end
-
----@class BMUtilsBasic Basic utilities from other programming languages missing in lua
-local basic = _G['BM-utils-@project-version@']:NewModule("BMUtilsBasic")
 
 ---Parse a float from a string with localized decimal separator
 function basic.parseFloat(float)

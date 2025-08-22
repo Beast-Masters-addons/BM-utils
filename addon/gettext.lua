@@ -1,12 +1,10 @@
-local _, addon = ...
-if not addon.bm_utils_loaded then
+---@class BMGettext A simple gettext implementation for use in WoW addons
+local gettext = _G.LibStub:NewLibrary("BMGettext", 0)
+if not gettext then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
-
----@class BMGettext A simple gettext implementation for use in WoW addons
-local gettext = _G['BM-utils-@project-version@']:NewModule("BMGettext")
 
 gettext.locales = {}
 gettext.strings = {}

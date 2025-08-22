@@ -1,12 +1,10 @@
-local _, addon = ...
-if not addon.bm_utils_loaded then
+---@class BMUtils
+local lib = _G.LibStub:NewLibrary("BMUtils", 0)
+if not lib then
     -- luacov: disable
     return --Check if addon is loaded
     -- luacov: enable
 end
-
----@class BMUtils
-local lib = _G['BM-utils-@project-version@']:NewModule("BMUtils")
 
 ---Wow major version
 ---@type number
