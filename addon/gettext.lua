@@ -1,6 +1,10 @@
-_G['BMUtils-gettext-@version@'] = {}
 ---@class BMGettext A simple gettext implementation for use in WoW addons
-local gettext = _G['BMUtils-gettext-@version@']
+local gettext = _G.LibStub:NewLibrary("BMGettext", 0)
+if not gettext then
+    -- luacov: disable
+    return --Check if addon is loaded
+    -- luacov: enable
+end
 
 gettext.locales = {}
 gettext.strings = {}

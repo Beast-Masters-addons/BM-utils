@@ -1,9 +1,11 @@
 if _G.GetContainerNumSlots ~= nil then
+    -- luacov: disable
     return --Do not load if global functions already exists
+    -- luacov: enable
 end
 
 _G.GetBagName = _G.C_Container.GetBagName
-_G.GetContainerItemID = _.G.C_Container.GetContainerItemID
+_G.GetContainerItemID = _G.C_Container.GetContainerItemID
 _G.GetContainerItemLink = _G.C_Container.GetContainerItemLink
 _G.GetContainerNumFreeSlots = _G.C_Container.GetContainerNumFreeSlots
 _G.GetContainerNumSlots = _G.C_Container.GetContainerNumSlots
@@ -20,3 +22,6 @@ function _G.GetContainerItemInfo(bagID, slot)
     item['hasLoot'], item['hyperlink'], item['isFiltered'], item['hasNoValue'], item['itemID'], item['isBound']
 end
 
+function _G.ContainerCompatLoaded()
+    return true
+end

@@ -1,7 +1,11 @@
 local lu = require('luaunit')
-loadfile('../addon/gettext.lua')()
+
+loadfile('build_utils/wow_api/functions.lua')()
+loadfile('build_utils/wow_api/frame.lua')()
+loadfile('build_utils/utils/load_toc.lua')('../BM-utils.toc')
+
 ---@type BMGettext
-local gettext = _G['BMUtils-gettext-@version@']
+local gettext = _G.LibStub("BMGettext")
 
 _G.test = {}
 local test = _G.test

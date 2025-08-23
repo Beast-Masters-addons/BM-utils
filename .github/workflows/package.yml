@@ -4,11 +4,13 @@ name: Test and package
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches:
+      - '*'
     tags:
       - '**'
   pull_request:
-    branches: [ master ]
+    branches:
+      - '*'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,18 +23,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        game_version: [ 'classic', 'bcc', 'retail' ]
+        game_version: [ 'classic', 'wrath', 'mists', 'retail' ]
 
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - name: Get build utils
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
-          repository: Beast-Masters-addons/build_utils
-          path: tests/build_utils
+          submodules: recursive
 
       - name: Install lua dependencies
         run: |
@@ -45,17 +43,25 @@ jobs:
       - name: Run luacheck
         run: luacheck addon --no-self
 
+      - name: Build the addon
+        uses: BigWigsMods/packager@v2.4.3
+        with:
+          args: -g ${{ matrix.game_version }} -z -d
+
+      - name: Move libraries
+        run: mv .release/BM-utils/libs .
+
       - name: Download classic UI source
         if: matrix.game_version == 'classic'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
           ref: 'classic_era'
 
-      - name: Download Burning Crusade Classic UI source
-        if: matrix.game_version == 'bcc'
-        uses: actions/checkout@v3
+      - name: Download Wrath Classic UI source
+        if: matrix.game_version == 'cata'
+        uses: actions/checkout@v5
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -63,7 +69,7 @@ jobs:
 
       - name: Download retail UI source
         if: matrix.game_version == 'retail'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           repository: Gethe/wow-ui-source
           path: tests/wow-ui-source
@@ -72,20 +78,25 @@ jobs:
       - name: Run tests
         working-directory: ./tests
         run: |
+          lua -lluacov test_basic.lua
+          lua -lluacov test_character_info.lua
+          lua -lluacov test_container.lua
+          lua -lluacov test_container_compat.lua
+          lua -lluacov test_gettext.lua
+          lua -lluacov test_table.lua
+          lua -lluacov test_text.lua
           lua -lluacov test_utils.lua
           lua -lluacov test_version.lua
-          lua -lluacov test_gettext.lua
-          lua -lluacov test_container.lua
         env:
           GAME_VERSION: ${{ matrix.game_version }}
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     needs:
       - test
@@ -97,12 +108,12 @@ jobs:
       WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@v2.1.0
+        uses: BigWigsMods/packager@v2.4.3
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: BM-utils
           path: .release
